@@ -1,0 +1,26 @@
+package org.green.spring.member.repository;
+
+import java.util.List;
+
+import org.green.spring.member.domain.MemberDto;
+
+
+public interface MemberRepository {
+	
+	// 등록
+	public int insert(MemberDto dto);
+	
+	// 목록 읽기
+	public List<MemberDto> selectList();
+	
+	// 단건 읽기
+	public MemberDto select(String userId);
+	
+	// 수정
+	public int update(MemberDto dto);
+	
+	// 삭제
+	public int delete(String userId);
+	
+}
+

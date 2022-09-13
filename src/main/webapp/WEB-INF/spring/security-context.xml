@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+  	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 로그인 처리를위한 유저정보 서비스 빈 등록 -->
+	<bean id="customUserDetailsService" class="org.green.spring.security.CustomUserDetailsService"></bean>
+	
+	<!-- 패스워드 복호화 빈 등록 -->
+	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
+	
+	<!-- 로그인 실패처리를위한 빈 등록 -->
+	<bean id="loginFailHandler" class="org.green.spring.security.LoginFailHandler"></bean>
+	
+	<!-- 인증 설정 -->
+	<security:authentication-manager>
+		<security:authentication-provider user-service-ref="customUserDetailsService">
+		 	<security:password-encoder ref="bcryptPasswordEncoder" />
+		</security:authentication-provider>
+	</security:authentication-manager>
+
+	<security:http>
+	    <security:csrf disabled="true"/>  <!-- crsf 비활성화 - 안하면 post요청시 에러남 --> 
+	    <security:form-login 
+	    		login-page="/customLogin" 
+	    		authentication-failure-handler-ref="loginFailHandler" /> 
+		 <security:logout logout-url="/customLogout" invalidate-session="true" delete-cookies="JSESSION_ID" /> 
+	    
+	    <security:access-denied-handler error-page="/accessError" />
+	    
+	    
+	    <!-- 사용자별 메뉴 접근권한 처리 -->
+	    <security:intercept-url pattern="/register" access="permitAll"/>
+	    <security:intercept-url pattern="/" access="isAuthenticated()"/> 
+	    <security:intercept-url pattern="/board/*" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>
+	    <security:intercept-url pattern="/member/*" access="hasRole('ROLE_ADMIN')"/>
+	</security:http> 	
+
+
+</beans>
