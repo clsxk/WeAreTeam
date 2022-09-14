@@ -10,13 +10,13 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">사용자관리</h1>
+                    <h1 class="h3 mb-2 text-gray-800">팀관리</h1>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                     
                         <div class="card-header py-3">
                         	<div class="row" style="justify-content: space-between;">
-                            <h6 class="m-0 font-weight-bold text-primary">사용자</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">팀원목록</h6>
                             </div>
                         </div>
                     
