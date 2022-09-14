@@ -28,9 +28,10 @@
                                         <tr>
                                             <th>아이디</th>
                                             <th>이름</th>
-                                            <th>등급</th>>
-                                            <th>등록일</th>
-                                            <th>수정일</th>        
+                                            <th>지역</th>
+                                            <th>실력</th>    
+                                            <th>등급</th>
+    
                                         </tr>
                                     </thead>     
                                     <tbody>
@@ -38,9 +39,11 @@
                                      	<tr>
                                      		<td><a href="/member/read?userId=${member.userId}">${member.userId}</a></td>
                                      		<td>${member.userName}</td>
+                                      		<td>${member.userLocation}</td>
+                                     		<td>${member.userLevel}</td>
                                      		<td>${member.role}</td>
-                                     		<td><fmt:formatDate value="${member.regDate}" pattern="yyyy/MM/dd" /></td>
-                                     		<td><fmt:formatDate value="${member.updateDate}" pattern="yyyy/MM/dd" /></td>
+
+                                     		
                                      	</tr>
                                      </c:forEach>
                                     </tbody>

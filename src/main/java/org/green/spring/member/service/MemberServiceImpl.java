@@ -37,7 +37,7 @@ public class MemberServiceImpl implements MemberService {
 		log.info("register...." + dto);
 		int result = repository.insert(dto);
 		if (result == 1) {
-			MemberDto insertDto = repository.select(userId);
+			MemberDto insertDto = get(userId);
 			return insertDto;
 		} else {
 			return null;
@@ -56,14 +56,7 @@ public class MemberServiceImpl implements MemberService {
 		return repository.select(userId);
 	}
 
-	@Override
-	public boolean modify(MemberDto dto) {
-		MemberDto readDto = repository.select(dto.getUserId());
-		readDto.setUpdateDate(new Date());
-			log.info("modify......" + dto);
-			return repository.update(dto) == 1;
-		}
-	
+
 
 	@Override
 	public boolean remove(String userId) {

@@ -13,10 +13,6 @@
 		</div>
 		<div class="card-body">
 			<div class="form-group">
-				<label>이름</label>
-				<input class="form-control" name="userName" value="${member.userName}" readonly/>
-			</div>
-			<div class="form-group">
 				<label>아이디</label>
 				<input class="form-control" name="userId" value="${member.userId}" readonly/>
 			</div>
@@ -25,18 +21,23 @@
 				<input type="password" class="form-control" name="userPw" value="${member.userPw}" readonly/>
 			</div>
 			<div class="form-group">
+				<label>이름</label>
+				<input class="form-control" name="userName" value="${member.userName}" readonly/>
+			</div>
+			<div class="form-group">
+				<label>지역</label>
+				<input class="form-control" name="userLocation" value="${member.userLocation}" readonly/>
+			</div>
+			<div class="form-group">
+				<label>실력</label>
+				<input class="form-control" name="userLevel"  value="${member.userLevel}" readonly/>
+			</div>
+			<div class="form-group">
 				<label>등급</label>
 				<input class="form-control" name="role" value="${member.role}" readonly/>
 			</div>
 			
-			<div class="form-group">
-				<label>등록일</label>
-				<input class="form-control" name="regDate" value="<fmt:formatDate pattern='yyyy/MM/dd hh:mm' value='${member.regDate}'/>" readonly/>
-			</div>
-			<div class="form-group">
-				<label>수정일</label>
-				<input class="form-control" name="updateDate" value="<fmt:formatDate pattern='yyyy/MM/dd hh:mm' value='${member.updateDate}'/>" readonly/>
-			</div>
+
 			<a href="/member/list" class="btn btn-info">목록</a>
 		</div>	
 	</div>

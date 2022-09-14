@@ -1,14 +1,14 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
-<html>
-<head>
-	<title>Home</title>
-</head>
-<body>
-<h1>
-	Hello world!  
-</h1>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@include file="includes/header.jsp"%>
 
-<P>  The time on the server is ${serverTime}. </P>
-</body>
-</html>
+<div class="container-fluid">
+
+	    
+	    <h1 class="h3 mb-4 text-gray-800">안녕하세요</h1>
+	    <h1 class="h3 mb-4 text-gray-800">사용자이름 : <sec:authentication property="principal.Username" /></h1>
+	    <h1 class="h3 mb-4 text-gray-800">사용자권한 : <sec:authentication property="principal.authorities" /></h1>
+</div>
+
+
+
+<%@include file="includes/footer.jsp"%>

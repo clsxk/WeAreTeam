@@ -19,8 +19,8 @@ public class MemberDto {
 	private String userId;
 	private String userPw;
 	private String userName;
-	private Date regDate;
-	private Date updateDate;
+	private String userLocation;
+	private String userLevel;
 	private String role; //사용자 등급
 	
 }

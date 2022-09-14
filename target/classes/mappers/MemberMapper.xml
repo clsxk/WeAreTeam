@@ -9,34 +9,34 @@
 
 <!-- 추가 -->
 <insert id="insert">
-	INSERT INTO USERS (USER_ID, USER_PW, USER_NAME, REG_DATE, UPDATE_DATE, ROLE)
-		VALUES (#{userId}, #{userPw}, #{userName}, SYSDATE, SYSDATE, #{role})
+	INSERT INTO TEAM_USERS (USERS_ID, USERS_PW, USERS_NAME, USERS_LOCATION, USERS_LEVEL, USERS_ROLE)
+		VALUES (#{userId}, #{userPw}, #{userName}, #{userLocation}, #{userLevel}, #{role})
 </insert>
 
 <!-- 목록조회 -->
 <select id="selectList" resultType="org.green.spring.member.domain.MemberDto">
 	SELECT * 
-		FROM USERS	
+		FROM TEAM_USERS	
 </select>
 
 <!-- 단건조회 -->
 <select id="select" resultType="org.green.spring.member.domain.MemberDto">
 	SELECT * 
-		FROM USERS 
-			WHERE USER_ID = #{userId}
+		FROM TEAM_USERS 
+			WHERE USERS_ID = #{userId}
 </select>
 
 <!-- 수정 -->
 <update id="update">
-	UPDATE USERS
-		SET USER_PW= #{userPw}, USER_NAME= #{userName}, ROLE=#{role}, UPDATE_DATE=SYSDATE
-			WHERE USER_ID = #{userId}
+	UPDATE TEAM_USERS
+		SET USERS_PW= #{userPw}, USERS_NAME= #{userName}, USERS_LOCATION = #{userLocation},USERS_LEVEL = #{userLevel},USERS_ROLE=#{role}
+			WHERE USERS_ID = #{userId}
 </update>
 
 <!-- 삭제 -->
 <delete id="delete">
-	DELETE FROM USERS
-		WHERE USER_ID = #{userId}
+	DELETE FROM TEAM_USERS
+		WHERE USERS_ID = #{userId}
 </delete>
 
 
