@@ -68,7 +68,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">테스트 프로젝트</div>
+                <div class="sidebar-brand-text mx-3">We Are Team</div>
             </a>
 
             <!-- Divider -->
@@ -78,7 +78,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="/">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>대시보드</span></a>
+                    <span>메인화면</span></a>
             </li>
 
             <!-- Divider -->
@@ -95,11 +95,11 @@
 			<li class = "nav-item">
 				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#memberPages" aria-expanded="true" aria-controls="memberPages">
 					<i class="fas fa-fw fa-folder"></i>
-					<span>사용자관리</span>
+					<span>팀관리</span>
 				</a>
 				<div id="memberPages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" href="/member/list">사용자목록</a>
+						<a class="collapse-item" href="/member/list">팀원목록</a>
 					</div>
 				</div>
 			</li>
@@ -115,7 +115,7 @@
 				</a>
 				<div id="boardPages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" href="/board/list">게시물목록</a> 
+						<a class="collapse-item" href="/board/list">경기일정</a> 
 					</div>
 				</div>
 		</li>

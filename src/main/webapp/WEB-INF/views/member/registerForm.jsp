@@ -57,34 +57,31 @@ $(document).ready(function() {
                                 <h1 class="h4 text-gray-900 mb-4">회원가입</h1>
                             </div>
                             <form class="user" action="/register" method="post">
-
+  								<div class="form-group">
+  									<input type="text" class="form-control form-control-user" name="userName" placeholder="이름">
+  								</div>
   								<div class="form-group">
   									<input type="text" class="form-control form-control-user" name="userId" placeholder="아이디">
   								</div>
   								 <div class="form-group">
   									<input type="password" class="form-control form-control-user" name="userPw" placeholder="패스워드">
   								</div>
-  								  <div class="form-group">
-  									<input type="text" class="form-control form-control-user" name="userName" placeholder="이름">
-  								</div>
-  								  <div class="form-group">
+
+  								<div class="form-group">
   									<input type="text" class="form-control form-control-user" name="userLocation" placeholder="지역">
   								</div>
-  							    <div class="form-group">
-  							    	<p>실력</p>
-  							    	<label><input type="radio" name="userLevel" value="상">상</label>
-  							    	<label><input type="radio" name="userLevel" value="중">중</label>
-  							    	<label><input type="radio" name="userLevel" value="하">하</label>
+  								<div class="form-group">
+  									<input type="text" class="form-control form-control-user" name="userLevel" placeholder="실력">
   								</div>
   								
   								<div class="form-group">
   									<div class="form-check-form-check-solid">
   										<input class="form-check-input" type="radio" id="user" name="role" value="ROLE_USER" checked>
-  										<label class="form-check-label" for="user">팀원</label>
+  										<label class="form-check-label" for="user">일반사용자</label>
   									</div>
   									  <div class="form-check-form-check-solid">
   										<input class="form-check-input" type="radio" id="admin" name="role" value="ROLE_ADMIN">
-  										<label class="form-check-label" for="user">팀매니저</label>
+  										<label class="form-check-label" for="user">관리자</label>
   									</div>
   								</div>
   								

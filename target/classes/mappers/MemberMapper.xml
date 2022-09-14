@@ -9,7 +9,7 @@
 
 <!-- 추가 -->
 <insert id="insert">
-	INSERT INTO TEAM_USERS (USERS_ID, USERS_PW, USERS_NAME, USERS_LOCATION, USERS_LEVEL, USERS_ROLE)
+	INSERT INTO TEAM_USERS (USER_ID, USER_PW, USER_NAME, USER_LOCATION, USER_LEVEL, USER_ROLE)
 		VALUES (#{userId}, #{userPw}, #{userName}, #{userLocation}, #{userLevel}, #{role})
 </insert>
 
@@ -22,21 +22,21 @@
 <!-- 단건조회 -->
 <select id="select" resultType="org.green.spring.member.domain.MemberDto">
 	SELECT * 
-		FROM TEAM_USERS 
-			WHERE USERS_ID = #{userId}
+		FROM USERS 
+			WHERE USER_ID = #{userId}
 </select>
 
 <!-- 수정 -->
 <update id="update">
 	UPDATE TEAM_USERS
-		SET USERS_PW= #{userPw}, USERS_NAME= #{userName}, USERS_LOCATION = #{userLocation},USERS_LEVEL = #{userLevel},USERS_ROLE=#{role}
-			WHERE USERS_ID = #{userId}
+		SET USER_PW= #{userPw}, USER_NAME= #{userName}, USER_LOCATION = #{userLocation},USER_LEVEL = #{userLevel},USER_ROLE=#{role}
+			WHERE USER_ID = #{userId}
 </update>
 
 <!-- 삭제 -->
 <delete id="delete">
-	DELETE FROM TEAM_USERS
-		WHERE USERS_ID = #{userId}
+	DELETE FROM TEAM_USER
+		WHERE USER_ID = #{userId}
 </delete>
 
 
