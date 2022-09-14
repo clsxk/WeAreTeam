@@ -22,7 +22,7 @@
 <!-- 단건조회 -->
 <select id="select" resultType="org.green.spring.member.domain.MemberDto">
 	SELECT * 
-		FROM USERS 
+		FROM TEAM_USERS 
 			WHERE USER_ID = #{userId}
 </select>
 
