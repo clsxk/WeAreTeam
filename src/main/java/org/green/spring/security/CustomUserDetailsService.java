@@ -17,7 +17,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 	private MemberRepository repository;
 
 	@Override
-	public UserDetails loadUserByUsername(String userName) {
+	public UserDetails loadUserByUsername(String userName) {  
 		log.info("Load User By UserName : " + userName);
 		MemberDto dto = repository.select(userName);
 	

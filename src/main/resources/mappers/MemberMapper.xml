@@ -9,7 +9,7 @@
 
 <!-- 추가 -->
 <insert id="insert">
-	INSERT INTO TEAM_USERS (USER_ID, USER_PW, USER_NAME, USER_LOCATION, USER_LEVEL, USER_ROLE)
+	INSERT INTO TEAM_USERS (USER_ID, USER_PW, USER_NAME, USER_LOCATION, USER_LEVEL, ROLE)
 		VALUES (#{userId}, #{userPw}, #{userName}, #{userLocation}, #{userLevel}, #{role})
 </insert>
 
@@ -35,7 +35,7 @@
 
 <!-- 삭제 -->
 <delete id="delete">
-	DELETE FROM TEAM_USER
+	DELETE FROM USERS
 		WHERE USER_ID = #{userId}
 </delete>
 

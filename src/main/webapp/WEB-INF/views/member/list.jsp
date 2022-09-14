@@ -41,9 +41,7 @@
                                      		<td>${member.userName}</td>
                                       		<td>${member.userLocation}</td>
                                      		<td>${member.userLevel}</td>
-                                     		<td>${member.role}</td>
-
-                                     		
+                                     		<td>${member.role}</td>                                  		
                                      	</tr>
                                      </c:forEach>
                                     </tbody>

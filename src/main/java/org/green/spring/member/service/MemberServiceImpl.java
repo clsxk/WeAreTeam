@@ -31,11 +31,11 @@ public class MemberServiceImpl implements MemberService {
 		//비밀번호 암호화
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String password = passwordEncoder.encode(dto.getUserPw());
-		dto.setUserPw(password);
+ 		dto.setUserPw(password);
 		
 		//사용자 추가하기
 		log.info("register...." + dto);
-		int result = repository.insert(dto);
+ 		int result = repository.insert(dto);
 		if (result == 1) {
 			MemberDto insertDto = get(userId);
 			return insertDto;

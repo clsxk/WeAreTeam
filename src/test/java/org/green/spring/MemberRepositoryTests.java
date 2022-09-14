@@ -21,7 +21,7 @@ public class MemberRepositoryTests {
 	
 	@Test 
 	public void 등록() {
-		MemberDto dto = new MemberDto("user1","1234","둘리",null,null,"ROLE_USER");
+		MemberDto dto = new MemberDto("user1","1234","둘리","AA","AA","ROLE_USER");
 		int result = repository.insert(dto);
 		log.info("CREATE 결과 : " + result);
 	}
@@ -35,7 +35,7 @@ public class MemberRepositoryTests {
 	
 	@Test
 	public void 단건조회() {
-		MemberDto readDto = repository.select("aa");
+		MemberDto readDto = repository.select("user1");
 		log.info("아이디 user1를 가진 사용자를 조회합니다");
 		log.info(readDto);
 	}
