@@ -2,6 +2,7 @@ package org.green.spring.member.controller;
 
 import java.util.List;
 
+import org.green.spring.board.domain.BoardDto;
 import org.green.spring.member.domain.MemberDto;
 import org.green.spring.member.service.MemberService;
 import org.green.spring.member.service.MemberServiceImpl;
@@ -58,6 +59,28 @@ public class MemberController {
 		MemberDto memberDto = service.get(userId);
 		model.addAttribute("member",memberDto);
 		return "member/read";
+	}
+	/* 수정화면 */
+	@GetMapping(value = "/member/modify") 
+	public String modifyForm(@RequestParam("userId") String userId, Model model) {
+		MemberDto memberDto = service.get(userId);
+		model.addAttribute("member", memberDto);
+		return "member/modifyForm";
+	} 
+	/* 수정처리 */
+	@PostMapping(value = "/member/modify")
+	public String modify(MemberDto memberVo, RedirectAttributes rttr) {
+		boolean result = service.modify(memberVo);
+		rttr.addFlashAttribute("modifyResult", result);
+		return "redirect:/member/read?userId=" + memberVo.getUserId();
+	}
+	
+	/* 삭제처리 */
+	@GetMapping(value = "/member/remove") 
+	public String remove(@RequestParam("userId") String userId,RedirectAttributes rttr) {
+		 boolean result =  service.remove(userId);
+		 rttr.addFlashAttribute("removeResult",result);
+		 return "redirect:/member/list";
 	}
 	
 }

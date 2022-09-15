@@ -42,7 +42,7 @@ public class MemberRepositoryTests {
 	
 	@Test 
 	public void 수정() {
-		MemberDto updateDto = repository.select("user1");
+		MemberDto updateDto = repository.select("qpo159");
 		updateDto.setUserName("고길동");
 		int result = repository.update(updateDto);
 		log.info("UPDATE 결과 : " + result);

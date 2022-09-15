@@ -12,5 +12,7 @@ public interface MemberService {
 	
 	public List<MemberDto> getList();
 	
+	public boolean modify(MemberDto dto);
+	
 	public boolean remove(String userId);
 }

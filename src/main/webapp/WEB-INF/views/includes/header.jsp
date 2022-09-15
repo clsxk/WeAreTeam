@@ -95,11 +95,11 @@
 			<li class = "nav-item">
 				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#memberPages" aria-expanded="true" aria-controls="memberPages">
 					<i class="fas fa-fw fa-folder"></i>
-					<span>팀관리</span>
+					<span>팀 관리</span>
 				</a>
 				<div id="memberPages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" href="/member/list">팀원목록</a>
+						<a class="collapse-item" href="/member/list">팀원 목록</a>
 					</div>
 				</div>
 			</li>
@@ -108,17 +108,25 @@
 			
 		<sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ADMIN')">
 			
+			
 		<li class="nav-item">
 				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#boardPages" aria-expanded="true" aria-controls="boardPages">
 					<i class="fas fa-fw fa-folder"></i>
-					<span>게시물관리</span>
+					<span>팀 회계</span>
 				</a>
-				<div id="boardPages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+<!-- 				<div id="boardPages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" href="/board/list">경기일정</a> 
+						<a class="collapse-item" href="/board/list">테스트</a> 
 					</div>
-				</div>
+				</div> -->
 		</li>
+		 
+		<li class="nav-item">
+                <a class="nav-link" href="/board/list">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>공지사항</span></a>
+         </li>
+		 
 		 
 		</sec:authorize>
 		

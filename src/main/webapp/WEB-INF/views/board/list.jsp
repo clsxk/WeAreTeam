@@ -5,7 +5,7 @@
 
 	<%@include file="../includes/header.jsp" %>
 
-<<script type="text/javascript">
+<script type="text/javascript">
 	$(document).ready(function() {
 		var registerNo = '<c:out value="${registerNo}"/>';
 		checkRegisterModal(registerNo);
@@ -42,14 +42,14 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">게시판</h1>
+                    <h1 class="h3 mb-2 text-gray-800">공지사항</h1>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                     
                         <div class="card-header py-3">
                         	<div class="row" style="justify-content: space-between;">
-                            <h6 class="m-0 font-weight-bold text-primary">게시물</h6>
-                            <a href="/board/register" class="btn btn-info">새로운 게시물 등록하기</a>
+                            <h6 class="m-0 font-weight-bold text-primary"></h6>
+                            <a href="/board/register" class="btn btn-info">새로운 공지사항 등록하기</a>
                             </div>
                         </div>
                     
@@ -104,7 +104,7 @@
                 </div>
                 <!-- /.container-fluid -->
 
-            </div>
+      
             <!-- End of Main Content -->
 
 	<%@include file="../includes/footer.jsp" %>

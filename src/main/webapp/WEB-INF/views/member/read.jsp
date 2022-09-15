@@ -4,6 +4,25 @@
 
 <%@include file="../includes/header.jsp"%>
 
+<script type="text/javascript">
+	$(document).ready(function() {
+		var modifyResult = '<c:out value="${modifyResult}"/>';
+		checkModifyModal(modifyResult);
+		function checkModifyModal(result) {
+			if (result === '') {
+				return;
+			}
+			if(result == 'true'){
+				$(".modal-body").html("수정을 성공하였습니다");
+			}else{
+				$(".modal-body").html("수정을 실패하였습니다");
+			}
+			$("#myModal").modal("show");
+		}
+	})
+</script>
+
+
 
 <div class="container-fluid">
 	<h1 class="h3 mb-2 text-gray-800">사용자 상세보기</h1>
@@ -37,8 +56,32 @@
 				<input class="form-control" name="role" value="${member.role}" readonly/>
 			</div>
 			
-
+			
 			<a href="/member/list" class="btn btn-info">목록</a>
+			<a href="/member/modify?userId=${member.userId}" class="btn btn-light">수정</a>
+
+			<!-- Modal 추가 -->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">처리결과</h5>
+							<button class="close" type="button" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">×</span>
+							</button>
+						</div>
+						<div class="modal-body"></div>
+						<div class="modal-footer">
+							<button class="btn btn-secondary" type="button"
+								data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
 		</div>	
 	</div>
 </div>

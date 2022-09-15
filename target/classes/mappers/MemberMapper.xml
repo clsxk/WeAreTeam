@@ -29,13 +29,13 @@
 <!-- 수정 -->
 <update id="update">
 	UPDATE TEAM_USERS
-		SET USER_PW= #{userPw}, USER_NAME= #{userName}, USER_LOCATION = #{userLocation},USER_LEVEL = #{userLevel},USER_ROLE=#{role}
+		SET USER_PW= #{userPw}, USER_NAME= #{userName}, USER_LOCATION = #{userLocation},USER_LEVEL = #{userLevel},ROLE=#{role}
 			WHERE USER_ID = #{userId}
 </update>
 
 <!-- 삭제 -->
 <delete id="delete">
-	DELETE FROM USERS
+	DELETE FROM TEAM_USERS
 		WHERE USER_ID = #{userId}
 </delete>
 

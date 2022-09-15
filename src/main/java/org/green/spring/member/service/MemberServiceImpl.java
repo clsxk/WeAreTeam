@@ -70,4 +70,11 @@ public class MemberServiceImpl implements MemberService {
 		}
 	}
 
+	@Override
+	public boolean modify(MemberDto dto) {
+		MemberDto readDto = repository.select(dto.getUserId());
+			log.info("modify......" + dto);
+			return repository.update(dto) == 1;
+	}
+
 }
