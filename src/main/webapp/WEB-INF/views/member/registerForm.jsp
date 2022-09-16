@@ -58,26 +58,27 @@ $(document).ready(function() {
                             </div>
                             <form class="user" action="/register" method="post">
   								<div class="form-group">
-  									<input type="text" class="form-control form-control-user" name="userName" placeholder="이름">
-  								</div>
-  								<div class="form-group">
   									<input type="text" class="form-control form-control-user" name="userId" placeholder="아이디">
   								</div>
   								 <div class="form-group">
   									<input type="password" class="form-control form-control-user" name="userPw" placeholder="패스워드">
   								</div>
 
+ 								<div class="form-group">
+  									<input type="text" class="form-control form-control-user" name="userName" placeholder="이름">
+  								</div>
   								<div class="form-group">
   									<input type="text" class="form-control form-control-user" name="userLocation" placeholder="지역">
   								</div>
   								<div class="form-group">
-  									<input type="text" class="form-control form-control-user" name="userLevel" placeholder="실력">
+  									<input type="text" class="form-control form-control-user" name="userLevel" placeholder="실력 : 상,중,하">
   								</div>
   								
   								<div class="form-group">
   									<div class="form-check-form-check-solid">
   										<input class="form-check-input" type="radio" id="user" name="role" value="ROLE_USER" checked>
   										<label class="form-check-label" for="user">팀원</label>
+  										
   									</div>
   									  <div class="form-check-form-check-solid">
   										<input class="form-check-input" type="radio" id="admin" name="role" value="ROLE_ADMIN">
