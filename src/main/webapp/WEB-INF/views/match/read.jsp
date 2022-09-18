@@ -26,7 +26,7 @@
 <div class="container-fluid">
 
 	<!-- Page Heading -->
-	<h1 class="h3 mb-2 text-gray-800">게시물 상세보기</h1>
+	<h1 class="h3 mb-2 text-gray-800">경기일정 상세보기</h1>
 	<!-- DataTales Example -->
 	<div class="card shadow mb-4">
 		<div class="card-header py-3">
@@ -35,32 +35,27 @@
 		<div class="card-body">
 				<div class="form-group">
 					<label>번호</label> 
-					<input class="form-control" name="no" value="${board.no}" readonly />
+					<input class="form-control" name="matchNo" value="${match.matchNo}" readonly />
 				</div>
 				<div class="form-group">
-					<label>제목</label> 
-					<input class="form-control" name="title" value="${board.title}" readonly/>
+					<label>경기날짜</label> 
+					<input class="form-control" name="matchDate" value = "<fmt:formatDate pattern='yyyy/MM/dd hh:mm' value='${match.matchDate}'/>" readonly/>
 				</div>
 				<div class="form-group">
-					<label>내용</label>
-					<textarea class="form-control" name="content" rows="3" readonly>${board.content}</textarea>
+					<label>경기장</label>
+					<textarea class="form-control" name="matchStadium" rows="3" readonly>${match.matchStadium }</textarea>
 				</div>
 				<div class="form-group">
-					<label>작성자</label>
-					<input class="form-control" name="writer" value="${board.writer}" readonly/>
+					<label>상대팀</label>
+					<input class="form-control" name="matchTeam" value="${match.matchTeam}" readonly/>
 				</div>
 				<div class="form-group">
-					<label>등록일</label> 
-					<input class="form-control" name="regDate" value = "<fmt:formatDate pattern='yyyy/MM/dd hh:mm' value='${board.regDate}'/>"
-					 readonly/>
+					<label>경기결과</label> 
+					<input class="form-control" name="matchResult" value="${match.matchResult}" readonly/>
 				</div>
-				<div class="form-group">
-					<label>수정일</label> 
-					<input class="form-control" name="updateDate" value = "<fmt:formatDate pattern='yyyy/MM/dd hh:mm' value='${board.updateDate}'/>"
-					 readonly/>
-				</div>
-				<a href="/board/modify?no=${board.no}" class="btn btn-light">수정</a>
-				<a href="/board/list" class="btn btn-info">목록</a>
+
+				<a href="/match/modify?no=${board.no}" class="btn btn-light">수정</a>
+				<a href="/match/list" class="btn btn-info">목록</a>
 				
 				<!-- Modal 추가 -->
 				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
