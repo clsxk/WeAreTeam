@@ -15,4 +15,6 @@ public interface MemberService {
 	public boolean modify(MemberDto dto);
 	
 	public boolean remove(String userId);
+	
+	public boolean create(MemberDto dto);
 }

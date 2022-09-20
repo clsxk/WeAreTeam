@@ -76,5 +76,12 @@ public class MemberServiceImpl implements MemberService {
 			log.info("modify......" + dto);
 			return repository.update(dto) == 1;
 	}
+	
+	@Override
+	public boolean create(MemberDto dto) {
+		MemberDto readDto = repository.select(dto.getUserId());
+			log.info("create......" + dto);
+			return repository.create(dto) == 1;
+	}
 
 }

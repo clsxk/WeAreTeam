@@ -1,5 +1,7 @@
 package org.green.spring.member.controller;
 
+import java.security.Principal;
+import java.util.HashMap;
 import java.util.List;
 
 import org.green.spring.board.domain.BoardDto;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.extern.slf4j.Slf4j;
@@ -81,6 +84,50 @@ public class MemberController {
 		 boolean result =  service.remove(userId);
 		 rttr.addFlashAttribute("removeResult",result);
 		 return "redirect:/member/list";
+	}
+	
+	/*아이디 체크 */
+	@GetMapping(value = "/idcheck")
+	public @ResponseBody HashMap<String, Boolean> idCheck(@RequestParam("userId") String userId){
+		HashMap<String, Boolean> result = new HashMap<String, Boolean>();
+		MemberDto memberDto = service.get(userId);
+		if(memberDto != null) {
+			result.put("isDuplicate", true);
+		} else {
+			result.put("isDuplicate", false);
+		}
+		return result;
+	}
+	
+	
+	/*팀생성 화면*/
+	@GetMapping(value = "/member/create") 
+	public String createForm(Principal principal, Model model) {
+		String userId = principal.getName();
+		MemberDto memberDto = service.get(userId);
+		model.addAttribute("member", memberDto);
+		return "/member/createForm";
+	} 
+	
+	/*팀생성 처리 */
+	@PostMapping(value = "/member/create")
+	public String create(MemberDto memberVo, RedirectAttributes rttr) {
+		boolean result = service.create(memberVo);
+		rttr.addFlashAttribute("createResult", result);
+		return "/home"; 
+	}
+	
+	/*팀이름 체크 */
+	@GetMapping(value = "/teamcheck")
+	public @ResponseBody HashMap<String, Boolean> teamcheck(@RequestParam("teamName") String teamName){
+		HashMap<String, Boolean> result = new HashMap<String, Boolean>();
+		MemberDto memberDto = service.get(teamName);
+		if(memberDto != null) {
+			result.put("isDuplicate", true);
+		} else {
+			result.put("isDuplicate", false);
+		}
+		return result;
 	}
 	
 }

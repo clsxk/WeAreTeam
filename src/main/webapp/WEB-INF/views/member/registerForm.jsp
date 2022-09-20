@@ -18,6 +18,35 @@ $(document).ready(function() {
 		$("#myModal").modal("show");
 	}		
 })
+
+		function idCheck(){
+		let userId = $('#userId'); 
+/* 		let userId = document.getElementById("userId"); 
+		let userId = document.getElementByName("userId");  */
+		
+		let idSpan = $('#idSpan');
+		let registerBtn = $('#registerBtn');
+		$.ajax({
+					url:'idcheck?userId=' + userId.val(),
+					type:'GET',
+					dataType:'json',
+					success:function(result){
+					let isDuplicate = result.isDuplicate;
+						if(isDuplicate==true){
+							idSpan.html("아이디가중복되었습니다");
+							registerBtn.attr("disabled",true);							
+						} else {
+							idSpan.empty();
+							registerBtn.attr("disabled",false)
+						}
+					},
+					error:function(){
+						console.log('에러발생');
+					}
+			})
+		}
+
+
 </script>
 
 
@@ -57,9 +86,15 @@ $(document).ready(function() {
                                 <h1 class="h4 text-gray-900 mb-4">회원가입</h1>
                             </div>
                             <form class="user" action="/register" method="post">
-  								<div class="form-group">
-  									<input type="text" class="form-control form-control-user" name="userId" placeholder="아이디">
-  								</div>
+								<div class="form-group row">
+									<div class="col-sm-8 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" id="userId" name="userId" placeholder="아이디">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <button type="button" class="btn btn-primary btn-user btn-block" onclick="idCheck()">중복체크</button>
+                                    </div>
+								</div>
+								<span id="idSpan" style="color:red;"></span>
   								 <div class="form-group">
   									<input type="password" class="form-control form-control-user" name="userPw" placeholder="패스워드">
   								</div>
@@ -84,9 +119,8 @@ $(document).ready(function() {
   										<input class="form-check-input" type="radio" id="admin" name="role" value="ROLE_ADMIN">
   										<label class="form-check-label" for="user">팀매니저</label>
   									</div>
-  								</div>
-  								
-  								<button type="submit" class="btn btn-primary btn-user btn-block">회원가입하기</button>				
+  								</div>							
+  								<button type="submit" class="btn btn-primary btn-user btn-block" id="registerBtn" disabled >회원가입하기</button>				
                             </form>
 
                         </div>

@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html lang="en">
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     <!-- End of Topbar -->
     <script src="/resources/vendor/jquery/jquery.min.js"></script>
     
@@ -101,18 +102,13 @@
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" href="/member/list">팀원 목록</a>
 						<a class="collapse-item" href="/match/list">경기 일정</a>
+						<a class="collapse-item" href="#">경기 기록</a>
 					</div>
 				</div>
-				
-				
+						
 			</li>
 			
-			</sec:authorize>
-			
-		<sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ADMIN')">
-			
-			
-		<li class="nav-item">
+			<li class="nav-item">
 				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#boardPages" aria-expanded="true" aria-controls="boardPages">
 					<i class="fas fa-fw fa-folder"></i>
 					<span>팀 회계</span>
@@ -130,7 +126,25 @@
                     <i class="fas fa-fw fa-folder"></i>
                     <span>공지사항</span></a>
          </li>
-		 
+			
+			</sec:authorize>
+			
+		<sec:authorize access="hasAnyRole('ROLE_USER')">
+			
+			
+		
+		 <li class="nav-item">
+                <a href="/member/create" class="nav-link">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>팀 생성</span></a>
+         </li>
+
+
+		<li class="nav-item">
+                <a href="/member/create" class="nav-link">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>팀 검색</span></a>
+         </li>
 		 
 		</sec:authorize>
 		
@@ -156,7 +170,7 @@
                     <!-- Topbar Search -->
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
+                    <!--     <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
@@ -164,7 +178,7 @@
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
-                        </div>
+                        </div> -->
                     </form>
 
                     <!-- Topbar Navbar -->
@@ -196,12 +210,12 @@
 
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                <!--             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
+                                Counter - Alerts
                                 <span class="badge badge-danger badge-counter">3+</span>
-                            </a>
+                            </a> -->
                             <!-- Dropdown - Alerts -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="alertsDropdown">
@@ -247,12 +261,12 @@
 
                         <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+      <!--                       <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-envelope fa-fw"></i>
-                                <!-- Counter - Messages -->
+                                Counter - Messages
                                 <span class="badge badge-danger badge-counter">7</span>
-                            </a>
+                            </a> -->
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="messagesDropdown">

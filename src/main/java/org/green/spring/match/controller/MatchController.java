@@ -30,7 +30,7 @@ public class MatchController {
 	//등록처리
 	@PostMapping(value = "/register")
 	public String register(MatchDto matchDto,RedirectAttributes rttr, Principal principal) {
-		String matchNo = principal.getName();
+		/* String matchNo = principal.getName(); */
 		MatchDto registerDto = matchService.register(matchDto);
 		rttr.addFlashAttribute("registerNo", registerDto.getMatchNo());
 		return "redirect:/match/list";

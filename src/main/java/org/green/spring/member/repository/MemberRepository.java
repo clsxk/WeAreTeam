@@ -22,5 +22,8 @@ public interface MemberRepository {
 	// 삭제
 	public int delete(String userId);
 	
+	// 팀생성
+	public int create(MemberDto dto);
+	
 }
 

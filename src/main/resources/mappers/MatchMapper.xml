@@ -21,7 +21,7 @@
 <!-- 추가 -->
 <insert id="insert">
 	INSERT INTO TEAM_CALRENDAR (CAR_NUM,CAR_DATE,CAR_STADIUM,CAR_MATCHTEAM,CAR_RESULT)
-		VALUES(TEAM_ACCOUNT_SEQ.NEXTVAL,SYSDATE,#{matchStadium},#{matchTeam},#{matchResult} )
+		VALUES(TEAM_CALRENDAR_SEQ.NEXTVAL,SYSDATE,#{matchStadium},#{matchTeam},#{matchResult} )
 		<selectKey keyProperty="matchNo" resultType="Integer">
 			SELECT MAX(CAR_NUM) AS no FROM TEAM_CALRENDAR
 		</selectKey>

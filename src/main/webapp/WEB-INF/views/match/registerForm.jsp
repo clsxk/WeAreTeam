@@ -38,6 +38,10 @@
     										<option value="무">무</option>
     										<option value="패">패</option>
 										</select>
+										<textarea class="form-control" name="matchTeam" rows="1" placeholder="팀득점"></textarea>
+										<textarea class="form-control" name="matchTeam" rows="1" placeholder="팀실점"></textarea>
+										<textarea class="form-control" name="matchTeam" rows="1" placeholder="골"></textarea>
+										<textarea class="form-control" name="matchTeam" rows="1" placeholder="어시"></textarea>
 									</div>
 
 									<button type="submit" class="btn btn-light">등록</button>

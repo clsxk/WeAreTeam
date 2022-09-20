@@ -9,8 +9,8 @@
 
 <!-- 추가 -->
 <insert id="insert">
-	INSERT INTO TEAM_USERS (USER_ID, USER_PW, USER_NAME, USER_LOCATION, USER_LEVEL, ROLE)
-		VALUES (#{userId}, #{userPw}, #{userName}, #{userLocation}, #{userLevel}, #{role})
+	INSERT INTO TEAM_USERS (USER_ID, USER_PW, USER_NAME, USER_LOCATION, USER_LEVEL, ROLE,TEAM_NAME)
+		VALUES (#{userId}, #{userPw}, #{userName}, #{userLocation}, #{userLevel}, #{role},null)
 </insert>
 
 <!-- 목록조회 -->
@@ -29,7 +29,7 @@
 <!-- 수정 -->
 <update id="update">
 	UPDATE TEAM_USERS
-		SET USER_PW= #{userPw}, USER_NAME= #{userName}, USER_LOCATION = #{userLocation},USER_LEVEL = #{userLevel},ROLE=#{role}
+		SET USER_PW= #{userPw}, USER_NAME= #{userName}, USER_LOCATION = #{userLocation},USER_LEVEL = #{userLevel},ROLE=#{role},TEAM_NAME = null
 			WHERE USER_ID = #{userId}
 </update>
 
@@ -39,6 +39,13 @@
 		WHERE USER_ID = #{userId}
 </delete>
 
+
+<!-- 팀생성 -->
+<update id="create">
+		UPDATE TEAM_USERS
+		SET ROLE= #{role} ,TEAM_NAME = #{teamName}
+			WHERE USER_ID = #{userId}
+</update>
 
 
 </mapper>
