@@ -21,7 +21,7 @@ public class MemberRepositoryTests {
 	
 	@Test 
 	public void 등록() {
-		MemberDto dto = new MemberDto("user4","1234","둘리","AA","AA","ROLE_USER","null");
+		MemberDto dto = new MemberDto("user4","1234","둘리","AA","AA","ROLE_USER","null","NULL");
 		int result = repository.insert(dto);
 		log.info("CREATE 결과 : " + result);
 	}

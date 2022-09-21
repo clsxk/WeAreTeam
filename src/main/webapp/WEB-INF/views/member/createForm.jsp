@@ -62,11 +62,14 @@ function teamCheck(){
               </div>
 			</div>
 			<span id="idSpan" style="color:red;"></span>
-
+<!-- 			<div class="form-group">
+				<label>팀상태</label>
+				<input class="form-control" name="teamJoin" value="agree" readonly/>
+			</div>	
 			<div class="form-group">
 				<label>권한</label>
 				<input class="form-control" name="role" value="ROLE_ADMIN" readonly/>
-			</div>	
+			</div> -->	
 			<button  type="submit" class="btn btn-primary " id="createBtn" disabled>생성</button>
 			<a href="/" class="btn btn-info">목록</a>
 			</form>

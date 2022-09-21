@@ -9,8 +9,8 @@
 
 <!-- 추가 -->
 <insert id="insert">
-	INSERT INTO TEAM_USERS (USER_ID, USER_PW, USER_NAME, USER_LOCATION, USER_AGE, ROLE,TEAM_NAME)
-		VALUES (#{userId}, #{userPw}, #{userName}, #{userLocation}, #{userAge}, #{role},null)
+	INSERT INTO TEAM_USERS (USER_ID, USER_PW, USER_NAME, USER_LOCATION, USER_AGE, ROLE,TEAM_NAME,TEAM_JOIN)
+		VALUES (#{userId}, #{userPw}, #{userName}, #{userLocation}, #{userAge}, #{role},null,null)
 </insert>
 
 <!-- 목록조회 -->
@@ -29,7 +29,7 @@
 <!-- 수정 -->
 <update id="update">
 	UPDATE TEAM_USERS
-		SET USER_PW= #{userPw}, USER_NAME= #{userName}, USER_LOCATION = #{userLocation},USER_AGE = #{userAge},ROLE=#{role},TEAM_NAME = null
+		SET USER_PW= #{userPw}, USER_NAME= #{userName}, USER_LOCATION = #{userLocation},USER_AGE = #{userAge},ROLE=#{role}
 			WHERE USER_ID = #{userId}
 </update>
 
@@ -43,7 +43,7 @@
 <!-- 팀생성 -->
 <update id="create">
 		UPDATE TEAM_USERS
-		SET ROLE= #{role} ,TEAM_NAME = #{teamName}
+		SET ROLE= 'ROLE_ADMIN' ,TEAM_NAME = #{teamName} , TEAM_JOIN = 'agree'
 			WHERE USER_ID = #{userId}
 </update>
 
@@ -58,8 +58,14 @@
 <select id="selectListTeam" resultType="org.green.spring.member.domain.MemberDto">
 	SELECT * 
 		FROM TEAM_USERS
-			WHERE TEAM_NAME IS NOT NULL	
+			WHERE ROLE = 'ROLE_ADMIN' AND TEAM_NAME IS NOT NULL	
 </select>
 
+<!-- 팀 신청 -->
+<update id="updateTeam">
+		UPDATE TEAM_USERS
+			SET TEAM_NAME = #{teamName} , TEAM_JOIN = 'standby'
+				WHERE USER_ID = #{userId}
+</update>
 
 </mapper>

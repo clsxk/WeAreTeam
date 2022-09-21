@@ -138,4 +138,23 @@ public class MemberController {
 		return "member/teamlist";
 	}
 	
+	//评 惑技焊扁
+	@GetMapping(value = "/member/readTeam")
+	public String getModify(@RequestParam("userId") String userId, Model model) {
+		MemberDto memberDto = service.get(userId);
+		model.addAttribute("member",memberDto);
+		return "member/readTeam";
+	}
+	
+	/*评积己 贸府 */
+	@PostMapping(value = "/member/modifyTeam")
+	public String modifyTeam(MemberDto memberVo,RedirectAttributes rttr,Principal principal) {
+		String userId = principal.getName();
+		memberVo.setUserId(userId);
+		boolean result = service.modifyTeam(memberVo);
+		rttr.addFlashAttribute("modifyResult", result);
+		return "redirect:/member/teamlist"; 
+	}
+	
+	
 }

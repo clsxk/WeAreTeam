@@ -1,5 +1,6 @@
 package org.green.spring.member.service;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.green.spring.member.domain.MemberDto;
@@ -21,4 +22,6 @@ public interface MemberService {
 	public MemberDto getTeam(String teamName);
 	
 	public List<MemberDto> getListTeam();
+	
+	public boolean modifyTeam(MemberDto dto);
 }

@@ -35,7 +35,6 @@
 			</div>
 			<div class="form-group">
 				<label>등급</label>
-
 				<input class="form-control" name="role" value="${member.role}" readonly/>
 			</div>
 			

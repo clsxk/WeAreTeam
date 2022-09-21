@@ -23,5 +23,6 @@ public class MemberDto {
 	private String userAge;
 	private String role; //사용자 등급
 	private String teamName;
+	private String teamJoin;
 	
 }

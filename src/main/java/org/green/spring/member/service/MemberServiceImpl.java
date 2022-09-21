@@ -2,6 +2,7 @@ package org.green.spring.member.service;
 
 import java.util.Date;
 import java.util.List;
+import java.security.Principal;
 
 import org.green.spring.member.domain.MemberDto;
 import org.green.spring.member.repository.MemberRepository;
@@ -96,4 +97,12 @@ public class MemberServiceImpl implements MemberService {
 		return repository.selectListTeam();
 	}
 
+	
+
+	public boolean modifyTeam(MemberDto dto) {
+		MemberDto readDto = repository.select(dto.getUserId());
+			log.info("team modify......" + dto);
+			return repository.updateTeam(dto) == 1;
+	}
+	
 }

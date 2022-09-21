@@ -29,7 +29,10 @@ public interface MemberRepository {
 	public MemberDto selectTeam(String teamName);
 	
 	// ∆¿∏Ò∑œ
-	
 	public List<MemberDto> selectListTeam();
+	
+	// ∆¿Ω≈√ª
+	public int updateTeam(MemberDto dto);
+
 }
 

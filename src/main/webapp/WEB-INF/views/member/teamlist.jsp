@@ -46,6 +46,7 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                        	<th>아이디</th>
                                             <th>팀이름</th>
                                             <th>리더</th>
                                             <th>지역</th>
@@ -56,6 +57,7 @@
                                     <tbody>
                                      <c:forEach var="member" items="${teamList}">
                                      	<tr>
+                                     		<td><a href="/member/readTeam?userId=${member.userId}">${member.userId}</a></td>
                                      		<td>${member.teamName}</td>
                                      		<td>${member.userName}</td>
                                       		<td>${member.userLocation}</td>
