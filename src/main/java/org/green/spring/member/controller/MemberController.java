@@ -118,16 +118,24 @@ public class MemberController {
 	}
 	
 	/*∆¿¿Ã∏ß √º≈© */
-	@GetMapping(value = "/teamcheck")
+	@GetMapping(value = "/member/teamcheck")
 	public @ResponseBody HashMap<String, Boolean> teamcheck(@RequestParam("teamName") String teamName){
 		HashMap<String, Boolean> result = new HashMap<String, Boolean>();
-		MemberDto memberDto = service.get(teamName);
+		MemberDto memberDto = service.getTeam(teamName);
 		if(memberDto != null) {
 			result.put("isDuplicate", true);
 		} else {
 			result.put("isDuplicate", false);
 		}
 		return result;
+	}
+	
+	//∆¿∏Ò∑œ
+	@GetMapping(value = "/member/teamlist")
+	public String getListTeam(Model model) {
+		List<MemberDto> teamList = service.getListTeam();
+		model.addAttribute("teamList",teamList);
+		return "member/teamlist";
 	}
 	
 }

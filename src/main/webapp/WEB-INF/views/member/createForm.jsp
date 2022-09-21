@@ -4,6 +4,40 @@
 
 <%@include file="../includes/header.jsp"%>
 
+ <script src="/resources/vendor/jquery/jquery.min.js"></script>
+ 
+ 
+<script type="text/javascript">
+function teamCheck(){
+	let teamName = $('#teamName'); 
+	
+	let idSpan = $('#idSpan');
+	let createBtn = $('#createBtn');
+	$.ajax({
+				url:'/member/teamcheck?teamName=' + teamName.val(),
+				type:'GET',
+				dataType:'json',
+				success:function(result){
+				let isDuplicate = result.isDuplicate;
+					if(isDuplicate==true){
+						idSpan.html("팀이름이 중복되었습니다");
+						createBtn.attr("disabled",true);							
+					} else {
+						idSpan.empty();
+						createBtn.attr("disabled",false)
+					}
+				},
+				error:function(){
+					console.log('에러발생');
+				}
+		})
+	}
+
+
+</script>
+
+
+
 <div class="container-fluid">
 	<h1 class="h3 mb-2 text-gray-800">팀 생성하기</h1>
 	<div class="card shadow mb-4">
@@ -20,15 +54,20 @@
 				<label>이름</label>
 				<input class="form-control" name="userName" value="${member.userName}" readonly/>
 			</div>
-			<div class="form-group">
+			<div class="form-group">	
 				<label>팀이름</label>
 				<input class="form-control" name="teamName" value="${member.teamName}" />
+				 <div class="col-sm-2 mb-3 mb-sm-1">
+                   <button type="button" class="btn btn-primary btn-user btn-block" onclick="teamCheck()">중복체크</button>
+              </div>
 			</div>
+			<span id="idSpan" style="color:red;"></span>
+
 			<div class="form-group">
 				<label>권한</label>
 				<input class="form-control" name="role" value="ROLE_ADMIN" readonly/>
 			</div>	
-			<button  type="submit" class="btn btn-light" >생성</button>
+			<button  type="submit" class="btn btn-primary " id="createBtn" disabled>생성</button>
 			<a href="/" class="btn btn-info">목록</a>
 			</form>
 

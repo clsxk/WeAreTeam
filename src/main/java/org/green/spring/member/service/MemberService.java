@@ -17,4 +17,8 @@ public interface MemberService {
 	public boolean remove(String userId);
 	
 	public boolean create(MemberDto dto);
+	
+	public MemberDto getTeam(String teamName);
+	
+	public List<MemberDto> getListTeam();
 }

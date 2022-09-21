@@ -25,5 +25,11 @@ public interface MemberRepository {
 	// 评积己
 	public int create(MemberDto dto);
 	
+	// 评眉农
+	public MemberDto selectTeam(String teamName);
+	
+	// 评格废
+	
+	public List<MemberDto> selectListTeam();
 }
 

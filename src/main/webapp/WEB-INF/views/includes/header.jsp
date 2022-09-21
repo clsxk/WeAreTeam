@@ -141,7 +141,7 @@
 
 
 		<li class="nav-item">
-                <a href="/member/create" class="nav-link">
+                <a href="/member/teamlist" class="nav-link">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>팀 검색</span></a>
          </li>

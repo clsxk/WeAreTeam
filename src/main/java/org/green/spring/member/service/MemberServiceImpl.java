@@ -83,5 +83,17 @@ public class MemberServiceImpl implements MemberService {
 			log.info("create......" + dto);
 			return repository.create(dto) == 1;
 	}
+	
+	@Override
+	public MemberDto getTeam(String teamName) {
+		log.info("get......" + teamName);
+		return repository.selectTeam(teamName);
+	}
+	
+	@Override
+	public List<MemberDto> getListTeam() {
+		log.info("get Team List......");
+		return repository.selectListTeam();
+	}
 
 }

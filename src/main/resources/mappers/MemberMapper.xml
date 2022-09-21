@@ -47,5 +47,19 @@
 			WHERE USER_ID = #{userId}
 </update>
 
+<!-- 팀이름 체크 -->
+<select id="selectTeam" resultType="org.green.spring.member.domain.MemberDto">
+	SELECT * 
+		FROM TEAM_USERS 
+			WHERE TEAM_NAME = #{teamName}
+</select>
+
+<!-- 팀 목록조회 -->
+<select id="selectListTeam" resultType="org.green.spring.member.domain.MemberDto">
+	SELECT * 
+		FROM TEAM_USERS
+			WHERE TEAM_NAME IS NOT NULL	
+</select>
+
 
 </mapper>
