@@ -106,7 +106,7 @@ $(document).ready(function() {
   									<input type="text" class="form-control form-control-user" name="userLocation" placeholder="지역">
   								</div>
   								<div class="form-group">
-  									<input type="text" class="form-control form-control-user" name="userLevel" placeholder="실력 : 상,중,하">
+  									<input type="text" class="form-control form-control-user" name="userAge" placeholder="나이">
   								</div>
   								
   								<div class="form-group">
@@ -115,10 +115,10 @@ $(document).ready(function() {
   										<label class="form-check-label" for="user">팀원</label>
   										
   									</div>
-  									  <div class="form-check-form-check-solid">
+<!--   									  <div class="form-check-form-check-solid">
   										<input class="form-check-input" type="radio" id="admin" name="role" value="ROLE_ADMIN">
   										<label class="form-check-label" for="user">팀매니저</label>
-  									</div>
+  									</div> -->
   								</div>							
   								<button type="submit" class="btn btn-primary btn-user btn-block" id="registerBtn" disabled >회원가입하기</button>				
                             </form>

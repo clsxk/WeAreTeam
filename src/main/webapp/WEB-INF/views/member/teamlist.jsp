@@ -59,7 +59,7 @@
                                      		<td>${member.teamName}</td>
                                      		<td>${member.userName}</td>
                                       		<td>${member.userLocation}</td>
-                                     		<td>${member.userLevel}</td>                                 		
+                                     		<td>${member.userAge}</td>                                 		
                                      	</tr>
                                      </c:forEach>
                                     </tbody>

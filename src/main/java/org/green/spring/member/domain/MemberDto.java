@@ -20,7 +20,7 @@ public class MemberDto {
 	private String userPw;
 	private String userName;
 	private String userLocation;
-	private String userLevel;
+	private String userAge;
 	private String role; //사용자 등급
 	private String teamName;
 	

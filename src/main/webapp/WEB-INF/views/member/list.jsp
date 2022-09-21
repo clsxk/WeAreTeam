@@ -49,7 +49,7 @@
                                             <th>아이디</th>
                                             <th>이름</th>
                                             <th>지역</th>
-                                            <th>실력</th>    
+                                            <th>나이</th>    
                                             <th>권한</th>
     
                                         </tr>
@@ -60,7 +60,7 @@
                                      		<td><a href="/member/read?userId=${member.userId}">${member.userId}</a></td>
                                      		<td>${member.userName}</td>
                                       		<td>${member.userLocation}</td>
-                                     		<td>${member.userLevel}</td>
+                                     		<td>${member.userAge}</td>
                                      		<td>${member.role}</td>                                  		
                                      	</tr>
                                      </c:forEach>

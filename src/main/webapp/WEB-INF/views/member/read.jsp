@@ -49,7 +49,7 @@
 			</div>
 			<div class="form-group">
 				<label>실력</label>
-				<input class="form-control" name="userLevel"  value="${member.userLevel}" readonly/>
+				<input class="form-control" name="userAge"  value="${member.userAge}" readonly/>
 			</div>
 			<div class="form-group">
 				<label>등급</label>
