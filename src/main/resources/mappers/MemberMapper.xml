@@ -18,7 +18,7 @@
 	SELECT * 
 		FROM TEAM_USERS	
 			WHERE
-				TEAM_NAME = #{teamName} and TEAM_JOIN = 'ACCESS'
+				ROLE = 'ROLE_ADMIN' OR ROLE = 'ROLE_SUPERADMIN' AND TEAM_NAME = #{teamName} and TEAM_JOIN = 'ACCESS' 
 </select>
 
 <!-- 단건조회 -->
@@ -45,7 +45,7 @@
 <!-- 팀생성 -->
 <update id="create">
 		UPDATE TEAM_USERS
-		SET ROLE= 'ROLE_ADMIN' ,TEAM_NAME = #{teamName} , TEAM_JOIN = 'ACCESS'
+		SET ROLE= 'ROLE_SUPERADMIN' ,TEAM_NAME = #{teamName} , TEAM_JOIN = 'ACCESS'
 			WHERE USER_ID = #{userId}
 </update>
 
@@ -53,14 +53,14 @@
 <select id="selectTeam" resultType="org.green.spring.member.domain.MemberDto">
 	SELECT * 
 		FROM TEAM_USERS 
-			WHERE ROLE = 'ROLE_ADMIN' AND TEAM_NAME = #{teamName}
+			WHERE ROLE = 'ROLE_SUPERADMIN' AND TEAM_NAME = #{teamName}
 </select>
 
 <!-- 팀 목록조회 -->
 <select id="selectListTeam" resultType="org.green.spring.member.domain.MemberDto">
 	SELECT * 
 		FROM TEAM_USERS
-			WHERE ROLE = 'ROLE_ADMIN' AND TEAM_NAME IS NOT NULL	
+			WHERE ROLE = 'ROLE_SUPERADMIN' AND TEAM_NAME IS NOT NULL	
 </select>
 
 <!-- 팀 신청 -->
@@ -73,7 +73,7 @@
 <!-- 팀원 수락 -->
 <update id="accessTeam">
 		UPDATE TEAM_USERS
-			SET TEAM_NAME = #{teamName} , TEAM_JOIN = 'ACCESS'
+			SET ROLE = 'ROLE_ADMIN', TEAM_NAME = #{teamName}, TEAM_JOIN = 'ACCESS'
 				WHERE USER_ID = #{userId}
 </update>
 

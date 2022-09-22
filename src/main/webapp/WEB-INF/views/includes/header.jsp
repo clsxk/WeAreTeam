@@ -90,7 +90,7 @@
 					
 			<%-- <sec:authorize access="denyAll"> --%> 
 		
-			<sec:authorize access="hasRole('ROLE_ADMIN',)"> 
+			<sec:authorize access="hasRole('ROLE_SUPERADMIN',)"> 
 		
 			<!-- Nav Item - Pages -->
 			
@@ -139,7 +139,7 @@
 			
 			</sec:authorize>
 			
-		<sec:authorize access="hasAnyRole('ROLE_USER')">
+		<sec:authorize access="hasAnyRole('ROLE_ADMIN')">
 			
 			
 		
@@ -191,10 +191,28 @@
                     <i class="fas fa-fw fa-folder"></i>
                     <span>공지사항</span></a>
          </li>
-			<!-- Nav Item end Pages -->
-         
-		 
+			<!-- Nav Item end Pages -->		 
 		</sec:authorize>
+		
+		
+ 		<sec:authorize access="hasAnyRole('ROLE_USER')">
+				
+		 <li class="nav-item">
+                <a href="/member/create" class="nav-link">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>팀 생성</span></a>
+         </li>
+
+
+		<li class="nav-item">
+                <a href="/member/teamlist" class="nav-link">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>팀 검색</span></a>
+         </li>
+         
+		</sec:authorize> 
+		
+		
 		
         </ul>
         <!-- End of Sidebar -->

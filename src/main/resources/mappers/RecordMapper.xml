@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="org.green.spring.record.repository.RecordRepository">
+ 
+ <!-- 목록조회 -->
+<select id="selectList" resultType="org.green.spring.record.domain.RecordDto">
+	SELECT * 
+		FROM TEAM_RECORD	
+</select>
+
+<!-- 단건조회 -->
+<select id="select" resultType="org.green.spring.record.domain.RecordDto">
+	SELECT * 
+		FROM TEAM_RECORD
+			WHERE USER_ID = #{userId}
+</select>
+ 
+ 
+ </mapper>

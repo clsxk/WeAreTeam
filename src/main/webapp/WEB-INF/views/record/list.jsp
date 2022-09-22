@@ -32,19 +32,20 @@
                                             <th>어시스트</th>
                                             <th>경기당 골</th>    
                                             <th>경기당 어시스트</th>
-                                            <th>경기참여율</th>
+                                            <th>경기참여율</th> 
     
                                         </tr>
                                     </thead>     
                                     <tbody>
-                                     <c:forEach var="record" items="${#}">
+                                     <c:forEach var="record" items="${recordList}">
                                      	<tr>
-                                     		<td>${#}</td>
-                                     		<td>${#}</td>
+                                     	<%--
+                                     		<td>${#userName}</td>
+                                     		<td>${#recordNum}</td>
+                                      		<td>${#recordGole}</td>
+                                     		<td>${#recordAssist}</td>
                                       		<td>${#}</td>
-                                     		<td>${#}</td>
-                                     		<td>${#}</td>
-                                     		<td>${#}</td>                                  		
+                                     		<td>${#}</td>   --%>                                		
                                      	</tr>
                                      </c:forEach>
                                     </tbody>

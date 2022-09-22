@@ -118,14 +118,14 @@ $(document).ready(function() {
   								<div class="form-group">
   									<div class="form-check-form-check-solid">
   										<input class="form-check-input" type="radio" id="user" name="role" value="ROLE_USER" checked>
-  										<label class="form-check-label" for="user">팀원</label>
-  										
+  										<label class="form-check-label" for="user">팀원</label>			
   									</div>
-<!--   									  <div class="form-check-form-check-solid">
+  	<!--  								
+  									  <div class="form-check-form-check-solid">
   										<input class="form-check-input" type="radio" id="admin" name="role" value="ROLE_ADMIN">
   										<label class="form-check-label" for="user">팀매니저</label>
-  									</div> -->
-  								</div>							
+  									</div>
+  								</div>	 -->						
   								<button type="submit" class="btn btn-primary btn-user btn-block" id="registerBtn" disabled >회원가입하기</button>				
                             </form>
 
