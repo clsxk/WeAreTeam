@@ -28,7 +28,7 @@ public class MemberRepositoryTests {
 	
 	@Test
 	public void 목록조회() {
-		for(MemberDto dto : repository.selectList()) {
+		for(MemberDto dto : repository.selectList(null)) {
 			log.info(dto.toString());
 		}
 	}
@@ -57,7 +57,7 @@ public class MemberRepositoryTests {
 	@Test 
 	public void 전체삭제() {
 		int result;
-		for (MemberDto dto : repository.selectList()) {
+		for (MemberDto dto : repository.selectList(null)) {
 			result = repository.delete(dto.getUserId());
 			log.info(dto.getUserId() + " 를 삭제합니다. 결과 : " + result);
 		}

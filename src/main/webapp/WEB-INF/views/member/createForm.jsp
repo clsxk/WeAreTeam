@@ -9,9 +9,11 @@
  
 <script type="text/javascript">
 function teamCheck(){
-	let teamName = $('#teamName'); 
+	let teamName = $('#teamName');
+	/* let teamName = document.getElementByName("teamName");   */
 	
 	let idSpan = $('#idSpan');
+	let idSpang = $('#idSpang');
 	let createBtn = $('#createBtn');
 	$.ajax({
 				url:'/member/teamcheck?teamName=' + teamName.val(),
@@ -20,10 +22,12 @@ function teamCheck(){
 				success:function(result){
 				let isDuplicate = result.isDuplicate;
 					if(isDuplicate==true){
+						idSpang.empty();
 						idSpan.html("팀이름이 중복되었습니다");
 						createBtn.attr("disabled",true);							
 					} else {
 						idSpan.empty();
+						idSpang.html("팀이름이 사용가능합니다");
 						createBtn.attr("disabled",false)
 					}
 				},
@@ -54,14 +58,20 @@ function teamCheck(){
 				<label>이름</label>
 				<input class="form-control" name="userName" value="${member.userName}" readonly/>
 			</div>
-			<div class="form-group">	
+			<div class="form-group row">
+			<div class="col-sm-4 mb-3 mb-sm-0">
 				<label>팀이름</label>
-				<input class="form-control" name="teamName" value="${member.teamName}" />
-				 <div class="col-sm-2 mb-3 mb-sm-1">
+				<input class="form-control" id="teamName" name="teamName" value="${member.teamName}" />
+				</div>
+				 <div class="col-sm-1">
+				 <label>.</label>
                    <button type="button" class="btn btn-primary btn-user btn-block" onclick="teamCheck()">중복체크</button>
               </div>
 			</div>
+			<div class="form-group">
 			<span id="idSpan" style="color:red;"></span>
+			<span id="idSpang" style="color:green;"></span>
+			</div>
 <!-- 			<div class="form-group">
 				<label>팀상태</label>
 				<input class="form-control" name="teamJoin" value="agree" readonly/>

@@ -11,7 +11,7 @@ public interface MemberService {
 	
 	public MemberDto get(String userId);
 	
-	public List<MemberDto> getList();
+	public List<MemberDto> getList(String teamName);
 	
 	public boolean modify(MemberDto dto);
 	
@@ -24,4 +24,10 @@ public interface MemberService {
 	public List<MemberDto> getListTeam();
 	
 	public boolean modifyTeam(MemberDto dto);
+	
+	public boolean modifyAccess(MemberDto dto);
+	
+	public boolean modifyDenied(MemberDto dto);
+	
+	public List<MemberDto> getStandbyList(String teamName);
 }

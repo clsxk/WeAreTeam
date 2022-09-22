@@ -13,10 +13,12 @@
 		VALUES (#{userId}, #{userPw}, #{userName}, #{userLocation}, #{userAge}, #{role},null,null)
 </insert>
 
-<!-- 목록조회 -->
+<!--팀원 조회 -->
 <select id="selectList" resultType="org.green.spring.member.domain.MemberDto">
 	SELECT * 
 		FROM TEAM_USERS	
+			WHERE
+				TEAM_NAME = #{teamName} and TEAM_JOIN = 'ACCESS'
 </select>
 
 <!-- 단건조회 -->
@@ -43,7 +45,7 @@
 <!-- 팀생성 -->
 <update id="create">
 		UPDATE TEAM_USERS
-		SET ROLE= 'ROLE_ADMIN' ,TEAM_NAME = #{teamName} , TEAM_JOIN = 'agree'
+		SET ROLE= 'ROLE_ADMIN' ,TEAM_NAME = #{teamName} , TEAM_JOIN = 'ACCESS'
 			WHERE USER_ID = #{userId}
 </update>
 
@@ -51,7 +53,7 @@
 <select id="selectTeam" resultType="org.green.spring.member.domain.MemberDto">
 	SELECT * 
 		FROM TEAM_USERS 
-			WHERE TEAM_NAME = #{teamName}
+			WHERE ROLE = 'ROLE_ADMIN' AND TEAM_NAME = #{teamName}
 </select>
 
 <!-- 팀 목록조회 -->
@@ -64,8 +66,33 @@
 <!-- 팀 신청 -->
 <update id="updateTeam">
 		UPDATE TEAM_USERS
-			SET TEAM_NAME = #{teamName} , TEAM_JOIN = 'standby'
+			SET TEAM_NAME = #{teamName} , TEAM_JOIN = 'STANDBY'
 				WHERE USER_ID = #{userId}
 </update>
+
+<!-- 팀원 수락 -->
+<update id="accessTeam">
+		UPDATE TEAM_USERS
+			SET TEAM_NAME = #{teamName} , TEAM_JOIN = 'ACCESS'
+				WHERE USER_ID = #{userId}
+</update>
+
+<!-- 팀원 거절 -->
+<update id="deniedTeam">
+		UPDATE TEAM_USERS
+			SET TEAM_NAME = #{teamName} , TEAM_JOIN = 'DENIED'
+				WHERE USER_ID = #{userId}
+</update>
+
+<!--대기자 조회 -->
+<select id="standbyList" resultType="org.green.spring.member.domain.MemberDto">
+	SELECT * 
+		FROM TEAM_USERS	
+			WHERE
+				TEAM_NAME = #{teamName} and TEAM_JOIN = 'STANDBY'
+</select>
+
+
+
 
 </mapper>

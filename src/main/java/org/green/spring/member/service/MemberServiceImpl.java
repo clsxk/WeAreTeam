@@ -46,9 +46,9 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public List<MemberDto> getList() {
+	public List<MemberDto> getList(String teamName) {
 		log.info("get List......");
-		return repository.selectList();
+		return repository.selectList(teamName);
 	}
 
 	@Override
@@ -87,7 +87,7 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Override
 	public MemberDto getTeam(String teamName) {
-		log.info("get......" + teamName);
+		log.info("get teamName......" + teamName);
 		return repository.selectTeam(teamName);
 	}
 	
@@ -97,12 +97,28 @@ public class MemberServiceImpl implements MemberService {
 		return repository.selectListTeam();
 	}
 
-	
-
 	public boolean modifyTeam(MemberDto dto) {
 		MemberDto readDto = repository.select(dto.getUserId());
 			log.info("team modify......" + dto);
 			return repository.updateTeam(dto) == 1;
+	}
+	@Override
+	public boolean modifyAccess(MemberDto dto) {
+		MemberDto readDto = repository.select(dto.getUserId());
+			log.info("Access modify......" + dto);
+			return repository.accessTeam(dto) == 1;
+	}
+	@Override
+	public boolean modifyDenied(MemberDto dto) {
+		MemberDto readDto = repository.select(dto.getUserId());
+			log.info("Denied modify......" + dto);
+			return repository.deniedTeam(dto) == 1;
+	}
+	
+	@Override
+	public List<MemberDto> getStandbyList(String teamName) {
+		log.info("get StandbyList......");
+		return repository.standbyList(teamName);
 	}
 	
 }

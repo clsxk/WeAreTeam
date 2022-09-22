@@ -36,10 +36,6 @@
 				<input class="form-control" name="userId" value="${member.userId}" readonly/>
 			</div>
 			<div class="form-group">
-				<label>패스워드</label>
-				<input type="password" class="form-control" name="userPw" value="${member.userPw}" readonly/>
-			</div>
-			<div class="form-group">
 				<label>이름</label>
 				<input class="form-control" name="userName" value="${member.userName}" readonly/>
 			</div>
@@ -48,9 +44,13 @@
 				<input class="form-control" name="userLocation" value="${member.userLocation}" readonly/>
 			</div>
 			<div class="form-group">
-				<label>실력</label>
+				<label>나이</label>
 				<input class="form-control" name="userAge"  value="${member.userAge}" readonly/>
 			</div>
+			<div class="form-group">
+				<label>팀이름</label>
+				<input class="form-control" name="role" value="${member.teamName}" readonly/>
+			</div>			
 			<div class="form-group">
 				<label>등급</label>
 				<input class="form-control" name="role" value="${member.role}" readonly/>

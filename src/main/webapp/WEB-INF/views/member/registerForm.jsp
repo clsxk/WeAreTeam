@@ -25,6 +25,7 @@ $(document).ready(function() {
 		let userId = document.getElementByName("userId");  */
 		
 		let idSpan = $('#idSpan');
+		let idSpang = $('#idSpang');
 		let registerBtn = $('#registerBtn');
 		$.ajax({
 					url:'idcheck?userId=' + userId.val(),
@@ -33,10 +34,12 @@ $(document).ready(function() {
 					success:function(result){
 					let isDuplicate = result.isDuplicate;
 						if(isDuplicate==true){
-							idSpan.html("아이디가중복되었습니다");
+							idSpang.empty();
+							idSpan.html("아이디가 중복되었습니다");
 							registerBtn.attr("disabled",true);							
 						} else {
 							idSpan.empty();
+							idSpang.html("아이디가 사용가능합니다");
 							registerBtn.attr("disabled",false)
 						}
 					},
@@ -94,7 +97,10 @@ $(document).ready(function() {
                                         <button type="button" class="btn btn-primary btn-user btn-block" onclick="idCheck()">중복체크</button>
                                     </div>
 								</div>
+								<div class="form-group">
 								<span id="idSpan" style="color:red;"></span>
+								<span id="idSpang" style="color:green;"></span>
+								</div>
   								 <div class="form-group">
   									<input type="password" class="form-control form-control-user" name="userPw" placeholder="패스워드">
   								</div>

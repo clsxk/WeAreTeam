@@ -1,5 +1,6 @@
 package org.green.spring.member.controller;
 
+import java.beans.beancontext.BeanContextMembershipListener;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
@@ -51,8 +52,11 @@ public class MemberController {
 	
 	//목록
 	@GetMapping(value = "/member/list")
-	public String getList(Model model) {
-		List<MemberDto> memberList = service.getList();
+	public String getList(Model model, Principal principal) {
+		String userId = principal.getName();
+		MemberDto readDto = service.get(userId);
+		String teamName = readDto.getTeamName();
+		List<MemberDto> memberList = service.getList(teamName);
 		model.addAttribute("memberList",memberList);
 		return "member/list";
 	}
@@ -88,7 +92,7 @@ public class MemberController {
 	
 	/*아이디 체크 */
 	@GetMapping(value = "/idcheck")
-	public @ResponseBody HashMap<String, Boolean> idCheck(@RequestParam("userId") String userId){
+	public @ResponseBody HashMap<String, Boolean> idCheck(@RequestParam("userId")String userId){
 		HashMap<String, Boolean> result = new HashMap<String, Boolean>();
 		MemberDto memberDto = service.get(userId);
 		if(memberDto != null) {
@@ -156,5 +160,41 @@ public class MemberController {
 		return "redirect:/member/teamlist"; 
 	}
 	
+	/*팀원 수락 처리 */
+	@PostMapping(value = "/member/modifyAccess")
+	public String modifyAccess(@RequestParam("userId") String userId,RedirectAttributes rttr) {
+		MemberDto memberDto = service.get(userId);
+		boolean result = service.modifyAccess(memberDto);
+		rttr.addFlashAttribute("modifyAccess", result);
+		return "redirect:/member/standbyList"; 
+	}
+	
+	/*팀원 거절 처리 */
+	@GetMapping(value = "/member/modifyDenied")
+	public String modifyDenied(@RequestParam("userId") String userId,RedirectAttributes rttr) {
+		MemberDto memberDto = service.get(userId);
+		boolean result = service.modifyDenied(memberDto);
+		rttr.addFlashAttribute("modifyDenied", result);
+		return "redirect:/member/standbyList"; 
+	}
+	
+	//대기자 목록
+	@GetMapping(value = "/member/standbyList")
+	public String getStandbyList(Model model, Principal principal) {
+		String userId = principal.getName();
+		MemberDto readDto = service.get(userId);
+		String teamName = readDto.getTeamName();
+		List<MemberDto> standbyList = service.getStandbyList(teamName);
+		model.addAttribute("standbyList",standbyList);
+		return "member/standbyList";
+	}
+	
+	//대기자 상세보기
+	@GetMapping(value = "/member/readStandby")
+	public String getreadStandby(@RequestParam("userId") String userId, Model model) {
+		MemberDto memberDto = service.get(userId);
+		model.addAttribute("member",memberDto);
+		return "member/readStandby";
+	}
 	
 }

@@ -11,7 +11,7 @@ public interface MemberRepository {
 	public int insert(MemberDto dto);
 	
 	// 목록 읽기
-	public List<MemberDto> selectList();
+	public List<MemberDto> selectList(String teamName);
 	
 	// 단건 읽기
 	public MemberDto select(String userId);
@@ -33,6 +33,15 @@ public interface MemberRepository {
 	
 	// 팀신청
 	public int updateTeam(MemberDto dto);
+
+	// 팀원 수락
+	public int accessTeam(MemberDto dto);
+	
+	// 팀원 거절
+	public int deniedTeam(MemberDto dto);
+	
+	// 대기자 목록
+	public List<MemberDto> standbyList(String teamName);
 
 }
 

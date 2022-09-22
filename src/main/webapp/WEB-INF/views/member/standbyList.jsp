@@ -6,25 +6,6 @@
 	<%@include file="../includes/header.jsp" %>
 
 
-<script type="text/javascript">
-	$(document).ready(function() {
-		var removeResult = '${removeResult}';
-		checkRemoveModal(removeResult);
-		function checkRemoveModal(result) {
-			if(result ===''){
-				return;
-			}
-			if(result == 'true'){
-				$(".modal-body").html("삭제를 성공하였습니다");	
-			} else {
-				$(".modal-body").html("삭제를 실패하였습니다");	
-			}
-			$("#myModal").modal("show");
-		}
-		
-		
-	})
-</script>
 	
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -36,7 +17,7 @@
                     
                         <div class="card-header py-3">
                         	<div class="row" style="justify-content: space-between;">
-                            <h6 class="m-0 font-weight-bold text-primary">팀원목록</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">대기자 목록</h6>
                             </div>
                         </div>
                     
@@ -50,46 +31,21 @@
                                             <th>이름</th>
                                             <th>지역</th>
                                             <th>나이</th>    
-                                            <th>팀이름</th>
-                                            <th>권한</th>
     
                                         </tr>
                                     </thead>     
                                     <tbody>
-                                     <c:forEach var="member" items="${memberList}">
+                                     <c:forEach var="member" items="${standbyList}">
                                      	<tr>
-                                     		<td><a href="/member/read?userId=${member.userId}">${member.userId}</a></td>
+                                     		<td><a href="/member/readStandby?userId=${member.userId}">${member.userId}</a></td>                          
                                      		<td>${member.userName}</td>
                                       		<td>${member.userLocation}</td>
-                                     		<td>${member.userAge}</td>
-                                     		<td>${member.teamName}</td>
-                                     		<td>${member.role}</td>                                  		
+                                     		<td>${member.userAge}</td>                                 		
                                      	</tr>
                                      </c:forEach>
                                     </tbody>
                                 </table>              
                             </div>
-
-			<!-- Modal 추가 -->
-			<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-				aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">처리결과</h5>
-							<button class="close" type="button" data-dismiss="modal"
-								aria-label="Close">
-								<span aria-hidden="true">×</span>
-							</button>
-						</div>
-						<div class="modal-body"></div>
-						<div class="modal-footer">
-							<button class="btn btn-secondary" type="button"
-								data-dismiss="modal">Close</button>
-						</div>
-					</div>
-				</div>
-			</div>
 
 
 		</div>
