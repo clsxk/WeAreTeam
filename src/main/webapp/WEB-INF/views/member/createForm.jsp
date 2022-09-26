@@ -78,7 +78,7 @@ function teamCheck(){
 			</div>	
 			<div class="form-group">
 				<label>권한</label>
-				<input class="form-control" name="role" value="ROLE_ADMIN" readonly/>
+				<input class="form-control" name="role" value="ROLE_MEMBER" readonly/>
 			</div> -->	
 			<button  type="submit" class="btn btn-primary " id="createBtn" disabled>생성</button>
 			<a href="/" class="btn btn-info">목록</a>

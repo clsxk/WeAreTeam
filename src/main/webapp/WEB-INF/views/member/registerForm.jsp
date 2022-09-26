@@ -122,7 +122,7 @@ $(document).ready(function() {
   									</div>
   	<!--  								
   									  <div class="form-check-form-check-solid">
-  										<input class="form-check-input" type="radio" id="admin" name="role" value="ROLE_ADMIN">
+  										<input class="form-check-input" type="radio" id="admin" name="role" value="ROLE_MEMBER">
   										<label class="form-check-label" for="user">팀매니저</label>
   									</div>
   								</div>	 -->						

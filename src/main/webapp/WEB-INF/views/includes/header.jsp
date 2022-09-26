@@ -90,7 +90,7 @@
 					
 			<%-- <sec:authorize access="denyAll"> --%> 
 		
-			<sec:authorize access="hasRole('ROLE_SUPERADMIN',)"> 
+			<sec:authorize access="hasRole('ROLE_ADMIN',)"> 
 		
 			<!-- Nav Item - Pages -->
 			
@@ -123,7 +123,7 @@
 				</a>
 				<div id="boardPages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" href="#">수입&지출</a>
+						<a class="collapse-item" href="/account/list">수입&지출</a>
 						<a class="collapse-item" href="#">회계 현황</a> 
 					</div>
 				</div>
@@ -139,7 +139,7 @@
 			
 			</sec:authorize>
 			
-		<sec:authorize access="hasAnyRole('ROLE_ADMIN')">
+		<sec:authorize access="hasAnyRole('ROLE_MEMBER')">
 			
 			
 		
