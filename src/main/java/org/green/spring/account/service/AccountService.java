@@ -12,7 +12,7 @@ public interface AccountService {
 	
 	public AccountDto get(int accNum);
 	
-	public List<AccountDto> getList();
+	public List<AccountDto> getList(String teamName);
 	
 	public boolean modify(AccountDto dto);
 	

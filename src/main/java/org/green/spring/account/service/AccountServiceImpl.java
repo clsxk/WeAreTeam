@@ -27,9 +27,9 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public List<AccountDto> getList() {
+	public List<AccountDto> getList(String teamName) {
 		log.info("acc get List....");
-		return repository.selectList();
+		return repository.selectList(teamName);
 	}
 	
 	@Override

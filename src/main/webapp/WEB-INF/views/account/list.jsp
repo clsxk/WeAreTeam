@@ -49,7 +49,7 @@
                         <div class="card-header py-3">
                         	<div class="row" style="justify-content: space-between;">
                             <h6 class="m-0 font-weight-bold text-primary"></h6>
-                            <a href="/board/register" class="btn btn-info">수입&지출 등록하기</a>
+                            <a href="/account/register" class="btn btn-info">수입&지출 등록하기</a>
                             </div>
                         </div>
                     
@@ -71,8 +71,7 @@
                                     <tbody>
                                      <c:forEach var="account" items="${accountList }">
                                      	<tr>
-                                     		<%-- <td><a href="/account/read?accNum=${account.accNum }">${account.accNum}</a></td> --%>
-                                     		<td>${account.accNum }</td>
+                                     		<td><a href="/account/read?accNum=${account.accNum }">${account.accNum}</a></td>
                                      		<td>${account.teamName }</td>
                                      		<td>${account.accDivision }</td>
                                      		<td>${account.accContent }</td>

@@ -10,7 +10,7 @@ public interface AccountRepository {
 	public void insert(AccountDto dto);
 	
 	//목록 일기
-	public List<AccountDto> selectList();
+	public List<AccountDto> selectList(String teamName);
 	
 	//단건 읽기
 	public AccountDto select(int accNum);

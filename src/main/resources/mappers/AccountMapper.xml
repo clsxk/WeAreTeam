@@ -9,14 +9,14 @@
 <select id="selectList" resultType="org.green.spring.account.domain.AccountDto">
 SELECT ACC_NUM,A.TEAM_NAME,ACC_DIVISION,ACC_CONTENT,ACC_MONEY,ACC_DATE,ACC_NOTE
         FROM TEAM_ACCOUNT A JOIN TEAM_USERS U ON (A.TEAM_NAME = U.TEAM_NAME)       
-        WHERE  U.ROLE = 'ROLE_ADMIN' AND U.TEAM_JOIN = 'ACCESS'
+        WHERE  U.ROLE = 'ROLE_ADMIN' AND U.TEAM_JOIN = 'ACCESS' AND A.TEAM_NAME = #{teamName}
 </select>
 
 <!-- 단건조회 -->
 <select id="select" resultType="org.green.spring.board.domain.BoardDto">
 	SELECT * 
 		FROM TEAM_ACCOUNT
-			WHERE ACCOUNT_NUM = #{accNum}
+			WHERE ACC_NUM = #{accNum}
 </select>
  
  
@@ -24,9 +24,32 @@ SELECT ACC_NUM,A.TEAM_NAME,ACC_DIVISION,ACC_CONTENT,ACC_MONEY,ACC_DATE,ACC_NOTE
 <insert id="insert">
 	INSERT INTO TEAM_ACCOUNT (ACC_NUM,TEAM_NAME,ACC_DIVISION,ACC_CONTENT,ACC_MONEY,ACC_DATE,ACC_NOTE) 
 		VALUES ( TEAM_ACCOUNT_SEQ.nextval, #{teamName}, #{accDivision}, #{accContent}, #{accMoney},SYSDATE, #{accNote})
-		<selectKey keyProperty="no" resultType="Integer">
-			SELECT MAX(NO) AS no FROM TEAM_ACCOUNT
+		<selectKey keyProperty="accNum" resultType="Integer">
+			SELECT MAX(ACC_NUM) AS accNum FROM TEAM_ACCOUNT
 		</selectKey>
 </insert>
+ 
+ 
+ <!-- 수입금액 합계 조회 -->
+<select id="select" resultType="org.green.spring.board.domain.BoardDto">
+	SELECT sum(acc_money)
+		FROM TEAM_ACCOUNT
+			WHERE ACC_DIVISION = '수입' AND TEAM_NAME = #{teamName}; 
+</select>
+ 
+ 
+  <!-- 지출금액 합계 조회 -->
+<select id="" resultType="org.green.spring.board.domain.BoardDto">
+	SELECT sum(acc_money)
+		FROM TEAM_ACCOUNT
+			WHERE ACC_DIVISION = '지출' AND TEAM_NAME = #{teamName};
+</select>
+
+  <!-- 지출금액 합계 조회 -->
+<select id="" resultType="org.green.spring.board.domain.BoardDto">
+	SELECT sum(acc_money)
+		FROM TEAM_ACCOUNT
+			WHERE ACC_DIVISION = '지출' AND TEAM_NAME = #{teamName};
+</select>
  
  </mapper>

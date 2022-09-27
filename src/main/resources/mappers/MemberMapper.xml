@@ -18,7 +18,7 @@
 	SELECT * 
 		FROM TEAM_USERS	
 			WHERE
-				ROLE = 'ROLE_MEMBER' OR ROLE = 'ROLE_ADMIN' AND TEAM_NAME = #{teamName} and TEAM_JOIN = 'ACCESS' 
+				(ROLE='ROLE_MEMBER' OR ROLE = 'ROLE_ADMIN') AND TEAM_NAME = #{teamName} and TEAM_JOIN = 'ACCESS' 
 </select>
 
 <!-- 단건조회 -->
