@@ -20,4 +20,8 @@ public interface AccountRepository {
 	
 	//ªË¡¶
 	public int delete(int accNum);
+	
+	public AccountDto selectIn(String teamName);
+	
+	public AccountDto selectOut(String teamName);
 }

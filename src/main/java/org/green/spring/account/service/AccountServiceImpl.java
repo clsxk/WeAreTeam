@@ -5,17 +5,23 @@ import java.util.List;
 import org.green.spring.account.domain.AccountDto;
 import org.green.spring.account.repository.AccountRepository;
 import org.green.spring.board.service.BoardServiceImpl;
+import org.green.spring.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
+@AllArgsConstructor
 public class AccountServiceImpl implements AccountService {
 	
 	@Autowired
 	private AccountRepository repository;
+	
+	@Autowired
+	private MemberService memberservice;
 	
 	@Override
 	public AccountDto register(AccountDto dto) {
@@ -60,6 +66,18 @@ public class AccountServiceImpl implements AccountService {
 			log.info("acc remove..." + accNum);
 			return repository.delete(accNum) == 1;
 		}
+	}
+
+	@Override
+	public AccountDto getIn(String teamName) {
+		log.info("acc getIN....." + teamName);
+		return repository.selectIn(teamName);
+	}
+
+	@Override
+	public AccountDto getOut(String teamName) {
+		log.info("acc getOut....." + teamName);
+		return repository.selectOut(teamName);
 	}
 
 }

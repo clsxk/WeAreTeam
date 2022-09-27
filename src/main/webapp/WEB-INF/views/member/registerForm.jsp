@@ -112,13 +112,13 @@ $(document).ready(function() {
   									<input type="text" class="form-control form-control-user" name="userLocation" placeholder="지역">
   								</div>
   								<div class="form-group">
-  									<input type="text" class="form-control form-control-user" name="userAge" placeholder="나이">
+  									<input type="number" class="form-control form-control-user" name="userAge" placeholder="나이">
   								</div>
   								
   								<div class="form-group">
   									<div class="form-check-form-check-solid">
   										<input class="form-check-input" type="radio" id="user" name="role" value="ROLE_USER" checked>
-  										<label class="form-check-label" for="user">팀원</label>			
+  										<label class="form-check-label" for="user">유저</label>			
   									</div>
   	<!--  								
   									  <div class="form-check-form-check-solid">

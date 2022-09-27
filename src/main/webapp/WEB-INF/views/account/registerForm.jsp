@@ -39,10 +39,10 @@
 										<label>금액</label>
 										<input type="number" class="form-control" name="accMoney" rows="3" placeholder="금액을 입력 하세요"></input>
 									</div>
-<!-- 									<div class="form-group">
+									<div class="form-group">
 										<label>날짜</label>
-										<textarea class="form-control" name="accDate" rows="3" placeholder=""></textarea>
-									</div> -->
+										<input type="date" class="form-control" name="accDate" rows="3" ></input>
+									</div> 
 									<div class="form-group">
 										<label>비고</label>
 										<textarea class="form-control" name="accNote"  placeholder="비고를 입력 하세요"></textarea>

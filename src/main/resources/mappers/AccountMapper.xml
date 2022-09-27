@@ -13,7 +13,7 @@ SELECT ACC_NUM,A.TEAM_NAME,ACC_DIVISION,ACC_CONTENT,ACC_MONEY,ACC_DATE,ACC_NOTE
 </select>
 
 <!-- 단건조회 -->
-<select id="select" resultType="org.green.spring.board.domain.BoardDto">
+<select id="select" resultType="org.green.spring.account.domain.AccountDto">
 	SELECT * 
 		FROM TEAM_ACCOUNT
 			WHERE ACC_NUM = #{accNum}
@@ -23,33 +23,43 @@ SELECT ACC_NUM,A.TEAM_NAME,ACC_DIVISION,ACC_CONTENT,ACC_MONEY,ACC_DATE,ACC_NOTE
  <!-- 추가 -->
 <insert id="insert">
 	INSERT INTO TEAM_ACCOUNT (ACC_NUM,TEAM_NAME,ACC_DIVISION,ACC_CONTENT,ACC_MONEY,ACC_DATE,ACC_NOTE) 
-		VALUES ( TEAM_ACCOUNT_SEQ.nextval, #{teamName}, #{accDivision}, #{accContent}, #{accMoney},SYSDATE, #{accNote})
+		VALUES ( TEAM_ACCOUNT_SEQ.nextval, #{teamName}, #{accDivision}, #{accContent}, #{accMoney},#{accDate}, #{accNote})
 		<selectKey keyProperty="accNum" resultType="Integer">
 			SELECT MAX(ACC_NUM) AS accNum FROM TEAM_ACCOUNT
 		</selectKey>
 </insert>
  
+ <!-- 수정 -->
+<update id="update">
+	UPDATE TEAM_ACCOUNT 
+		SET ACC_DIVISION = #{accDivision}, ACC_CONTENT = #{accContent}, ACC_MONEY= #{accMoney}, ACC_DATE = #{accDate}, ACC_NOTE = #{accNote}
+			WHERE ACC_NUM = #{accNum}
+</update>
  
- <!-- 수입금액 합계 조회 -->
-<select id="select" resultType="org.green.spring.board.domain.BoardDto">
-	SELECT sum(acc_money)
+ 
+ <!-- 삭제 -->
+<delete id="delete">
+	DELETE FROM TEAM_ACCOUNT
+		WHERE ACC_NUM = #{accNum}
+</delete>
+ 
+ 
+
+<select id="selectIn" resultType="org.green.spring.account.domain.AccountDto">
+	SELECT TEAM_NAME,sum(acc_money)
 		FROM TEAM_ACCOUNT
-			WHERE ACC_DIVISION = '수입' AND TEAM_NAME = #{teamName}; 
+			WHERE ACC_DIVISION = '수입' AND TEAM_NAME = #{teamName}
+			GROUP BY TEAM_NAME,acc_money
 </select>
  
  
-  <!-- 지출금액 합계 조회 -->
-<select id="" resultType="org.green.spring.board.domain.BoardDto">
-	SELECT sum(acc_money)
+
+<select id="selectOut" resultType="org.green.spring.account.domain.AccountDto">
+	SELECT TEAM_NAME,sum(acc_money)
 		FROM TEAM_ACCOUNT
-			WHERE ACC_DIVISION = '지출' AND TEAM_NAME = #{teamName};
+			WHERE ACC_DIVISION = '지출' AND TEAM_NAME = #{teamName}
+			GROUP BY TEAM_NAME,acc_money
 </select>
 
-  <!-- 지출금액 합계 조회 -->
-<select id="" resultType="org.green.spring.board.domain.BoardDto">
-	SELECT sum(acc_money)
-		FROM TEAM_ACCOUNT
-			WHERE ACC_DIVISION = '지출' AND TEAM_NAME = #{teamName};
-</select>
- 
+
  </mapper>
