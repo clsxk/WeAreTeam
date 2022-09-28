@@ -22,7 +22,25 @@
 		}
 		
 		
+		var requestResult = '${requestResult}';
+		checkRemoveModal(requestResult);
+		function checkRemoveModal(result) {
+			if(result ===''){
+				return;
+			}
+			if(result == 'true'){
+				$(".modal-body").html("팀신청 완료. 팀매니저 수락시 팀원에 등록됩니다.");
+			} else {
+				$(".modal-body").html("팀신청이 실패하였습니다");	
+			}
+			$("#myModal").modal("show");
+		}
 	})
+
+		
+
+
+		
 </script>
 	
                 <!-- Begin Page Content -->

@@ -6,10 +6,10 @@
 
 
 <div class="container-fluid">
-	<h1 class="h3 mb-2 text-gray-800">팀 상세보기</h1>
+	<h1 class="h3 mb-2 text-gray-800">팀 신청하기</h1>
 	<div class="card shadow mb-4">
 		<div class="card-header py-3">
-			<h6 class="m-0 font-weight-bold text-primary">상세보기</h6>
+			<h6 class="m-0 font-weight-bold text-primary">팀 신청</h6>
 		</div>
 		<div class="card-body">
 		<form role="form" action="/member/modifyTeam" method="post">

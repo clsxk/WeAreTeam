@@ -150,13 +150,13 @@ public class MemberController {
 		return "member/readTeam";
 	}
 	
-	/*评积己 贸府 */
+	/*评脚没 贸府 */
 	@PostMapping(value = "/member/modifyTeam")
 	public String modifyTeam(MemberDto memberVo,RedirectAttributes rttr,Principal principal) {
 		String userId = principal.getName();
 		memberVo.setUserId(userId);
 		boolean result = service.modifyTeam(memberVo);
-		rttr.addFlashAttribute("modifyResult", result);
+		rttr.addFlashAttribute("requestResult", result);
 		return "redirect:/member/teamlist"; 
 	}
 	
