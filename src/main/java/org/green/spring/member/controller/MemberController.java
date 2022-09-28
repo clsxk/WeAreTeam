@@ -49,6 +49,7 @@ public class MemberController {
 		
 		}
 	}
+
 	
 	//목록
 	@GetMapping(value = "/member/list")
@@ -205,6 +206,17 @@ public class MemberController {
 		MemberDto memberDto = service.get(userId);
 		model.addAttribute("member",memberDto);
 		return "member/myread";
+	}
+	
+	//멤버 목록
+	@GetMapping(value = "/member/memberlist")
+	public String getList1(Model model, Principal principal) {
+		String userId = principal.getName();
+		MemberDto readDto = service.get(userId);
+		String teamName = readDto.getTeamName();
+		List<MemberDto> memberList = service.getList(teamName);
+		model.addAttribute("memberList",memberList);
+		return "member/memberlist";
 	}
 	
 }

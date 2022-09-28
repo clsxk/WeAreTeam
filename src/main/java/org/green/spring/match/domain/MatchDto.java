@@ -19,11 +19,12 @@ public class MatchDto {
 	
 	private int matchNo;
 	private String teamName;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date matchDate;
+	private String matchDate;
 	private String matchStadium;
 	private String matchTeam;
 	private String matchResult;
+	private int matchGole;
+	private int matchLostPoint;
 	
 
 }

@@ -10,7 +10,7 @@
 		var createResult = '${createResult}';
 		checkRemoveModal(createResult);
 		function checkRemoveModal(result) {
-			if(result ===''){
+			ifcresult ===''){
 				return;
 			}
 			if(result == 'true'){
@@ -20,7 +20,9 @@
 			}
 			$("#myModal").modal("show");
 		}
-		
+	})	
+	
+	$(document).ready(function() {
 		
 		var requestResult = '${requestResult}';
 		checkRemoveModal(requestResult);

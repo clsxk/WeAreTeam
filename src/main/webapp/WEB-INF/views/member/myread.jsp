@@ -37,15 +37,15 @@
 			</div>
 			<div class="form-group">
 				<label>이름</label>
-				<input class="form-control" name="userName" value="${member.userName}" />
+				<input class="form-control" name="userName" value="${member.userName}" readonly/>
 			</div>
 			<div class="form-group">
 				<label>지역</label>
-				<input class="form-control" name="userLocation" value="${member.userLocation}" />
+				<input class="form-control" name="userLocation" value="${member.userLocation}" readonly/>
 			</div>
 			<div class="form-group">
 				<label>나이</label>
-				<input class="form-control" name="userAge"  value="${member.userAge}" />
+				<input class="form-control" name="userAge"  value="${member.userAge}" readonly/>
 			</div>
 			<div class="form-group">
 				<label>팀이름</label>

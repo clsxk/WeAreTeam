@@ -4,7 +4,20 @@
 <!DOCTYPE html>
 
 	<%@include file="../includes/header.jsp" %>
-
+<script src="http://code.jquery.com/jquery-3.1.1.js"></script>
+<script>
+$(document).ready(function() {
+	  $('#matchResult').change(function() {
+	    var result = $('#matchResult option:selected').val();
+	    if (result == '경기전') {
+	    	$('.point').hide();
+	    } else {
+	    	$('.point').show();
+	    }
+	  }); 
+	}); 
+</script>
+	
 	
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -20,7 +33,7 @@
 								<form role="form" action="/match/register" method="post">
 									<div class="form-group">
 										<label>경기날짜</label>
-										<input type="date" class="form-control" name="matchDate" rows="3" ></input>
+										<input type="datetime-local" class="form-control" name="matchDate" rows="3" ></input>
 									</div> 
 									<div class="form-group">
 										<label>경기장</label>
@@ -30,16 +43,25 @@
 										<label>상대팀</label>
 										<textarea class="form-control" name="matchTeam" rows="1" placeholder="상대팀을 입력 하세요"></textarea>
 									</div>
-									<div class="form-group">
+									<div class="form-group" "selectBox">
 										<label>경기결과</label>
-										<select class="form-control" name="matchResult" rows="1">
+										<select class="form-control" id="matchResult" name="matchResult" rows="1">
     										<option value="경기전">경기전</option>
     										<option value="승">승</option>
     										<option value="무">무</option>
     										<option value="패">패</option>
 										</select>
 									</div>
-
+									<div class="point" style="display:none">
+									<div class="form-group">
+										<label>팀득점</label>
+										<input type="number" class="form-control"  value="0" name="matchGole" rows="3" placeholder="팀득점을 입력 하세요" />
+									</div>
+									<div class="form-group">
+										<label>팀실점</label>
+										<input type="number" class="form-control"  value="0" name="matchLostPoint" rows="3" placeholder="팀실점을 입력 하세요" />
+									</div>
+								</div>
 									<button type="submit" class="btn btn-light">등록</button>
 									<button type="reset" class="btn btn-light">리셋</button>
 								</form>							

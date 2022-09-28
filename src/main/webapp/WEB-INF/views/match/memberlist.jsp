@@ -49,7 +49,6 @@
                         <div class="card-header py-3">
                         	<div class="row" style="justify-content: space-between;">
                             <h6 class="m-0 font-weight-bold text-primary"></h6>
-                            <a href="/match/register" class="btn btn-info">새로운 경기일정 등록하기</a>
                             </div>
                         </div>
                     
@@ -72,7 +71,7 @@
                                     <tbody>
                                      <c:forEach var="match" items="${matchList}">
                                      	<tr>
-                                     		<td><a href="/match/read?matchNo=${match.matchNo}">${match.matchNo}</a></td>
+                                     		<td>${match.matchNo}</td>
                                      		<td>${match.teamName}</td>
                                      		<td><fmt:formatDate value="${match.matchDate}" pattern="yyyy/MM/dd hh:mm" /></td>
                                      		<td>${match.matchStadium }</td>

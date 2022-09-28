@@ -53,6 +53,14 @@
 					<label>경기결과</label> 
 					<input class="form-control" name="matchResult" value="${match.matchResult}" readonly/>
 				</div>
+				<div class="form-group">
+					<label>팀득점</label> 
+					<input class="form-control" name="matchGole" value="${match.matchGole}" readonly/>
+				</div>
+				<div class="form-group">
+					<label>팀실점</label> 
+					<input class="form-control" name="matchLostPoint" value="${match.matchLostPoint}" readonly/>
+				</div>
 
 				<a href="/match/modify?no=${board.no}" class="btn btn-light">수정</a>
 				<a href="/match/list" class="btn btn-info">목록</a>

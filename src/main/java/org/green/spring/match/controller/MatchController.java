@@ -57,7 +57,7 @@ public class MatchController {
 	
 	//상세
 	@GetMapping(value = "/read")
-	public String get(@DateTimeFormat(pattern = "yyyy-MM-dd") @RequestParam("matchNo") int matchNo, Model model) {
+	public String get(@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm") @RequestParam("matchNo") int matchNo, Model model) {
 		MatchDto match = matchService.get(matchNo);
 		model.addAttribute("match", match);
 		return "match/read";
@@ -85,5 +85,15 @@ public class MatchController {
 		return "redirect:/match/list";
 	}
 	
-	
+	//목록(팀원)
+	@GetMapping(value = "/memberlist")
+	public String getList1(Model model,MatchDto matchDto, Principal principal) {
+		String userId = principal.getName();
+		MemberDto readDto = memberservice.get(userId);
+		String teamName = readDto.getTeamName();
+		matchDto.setTeamName(teamName);
+		List<MatchDto> matchList = matchService.getList(teamName);
+		model.addAttribute("matchList",matchList);
+		return "match/memberlist";
+	}
 }

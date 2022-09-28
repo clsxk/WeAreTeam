@@ -20,6 +20,9 @@ public class MatchServiceImpl implements MatchService {
 	
 	@Override
 	public MatchDto register(MatchDto dto) {
+		String matchDate = dto.getMatchDate();
+		String splitDate = matchDate.replace("T", " ");
+		dto.setMatchDate(splitDate);
 		log.info("Match register......" + dto);
 		repository.insert(dto);
 		int newNo = dto.getMatchNo();
