@@ -3,6 +3,7 @@ package org.green.spring.account.repository;
 import java.util.List;
 
 import org.green.spring.account.domain.AccountDto;
+import org.green.spring.account.domain.InAccountDto;
 
 public interface AccountRepository {
 	
@@ -21,7 +22,19 @@ public interface AccountRepository {
 	//삭제
 	public int delete(int accNum);
 	
-	public AccountDto selectIn(String teamName);
+	//수입
+	public InAccountDto selectIn(String teamName);
 	
-	public AccountDto selectOut(String teamName);
+	//지출
+	public InAccountDto selectOut(String teamName);
+	
+	//음료비
+	public InAccountDto selectDrink(String teamName);
+	
+	//구장비
+	public InAccountDto selectStadium(String teamName);
+	
+	//물품비
+	public InAccountDto selectGoods(String teamName);
+
 }

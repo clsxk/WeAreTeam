@@ -10,7 +10,7 @@
 <!-- 추가 -->
 <insert id="insert">
 	INSERT INTO TEAM_USERS (USER_ID, USER_PW, USER_NAME, USER_LOCATION, USER_AGE, ROLE,TEAM_NAME,TEAM_JOIN)
-		VALUES (#{userId}, #{userPw}, #{userName}, #{userLocation}, #{userAge}, #{role},null,null)
+		VALUES (#{userId}, #{userPw}, #{userName}, #{userLocation}, #{userAge},'ROLE_USER',null,null)
 </insert>
 
 <!--팀원 조회 -->

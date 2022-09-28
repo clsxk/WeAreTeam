@@ -20,9 +20,9 @@ $(document).ready(function() {
 <head>
 	<style>
 		h1 { text-align: center;}
-
 	</style>
-	<h1 style="color:white" >WE ARE TEAM</h1>
+	<h1 style="color:white" >&nbsp;</h1>
+	<h1 style="color:white" >WE ARE THE TEAM</h1>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -42,6 +42,15 @@ $(document).ready(function() {
 
 </head>
 
+<style>
+	.new-bg-login-image {
+  background: url("/resources/img/team.PNG");
+  background-position: center;
+  background-size: cover;
+}
+</style>
+
+
 <body class="bg-gradient-primary">
 
     <div class="container">
@@ -55,7 +64,7 @@ $(document).ready(function() {
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                           <div class="col-lg-6 d-none d-lg-block bg-login-image"></div> 
+                           <div class="col-lg-6 d-none d-lg-block new-bg-login-image"></div> 
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">

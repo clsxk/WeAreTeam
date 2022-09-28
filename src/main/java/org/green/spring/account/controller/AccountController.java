@@ -2,10 +2,12 @@ package org.green.spring.account.controller;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Set;
 
 import javax.sql.rowset.serial.SerialArray;
 
 import org.green.spring.account.domain.AccountDto;
+import org.green.spring.account.domain.InAccountDto;
 import org.green.spring.account.service.AccountService;
 import org.green.spring.board.domain.BoardDto;
 import org.green.spring.member.domain.MemberDto;
@@ -96,16 +98,52 @@ public class AccountController {
 		 return "redirect:/account/list";
 	}
 	
-	/* 회계 현황  */
+	/*  회계 현황   */
 	@GetMapping(value = "/status")
-	public String getIn(AccountDto accountDto,Principal principal, Model model) {
+	public String getIn(InAccountDto accountDto,Principal principal, Model model) {
 		String userId = principal.getName();
 		MemberDto readDto = memberservice.get(userId);
 		String teamName = readDto.getTeamName();
-		accountDto.setTeamName(teamName);
-		AccountDto account = accountService.getIn(teamName);
-		model.addAttribute("account", account);
-		int accMoney = accountDto.getAccMoney();
+		//수입
+		InAccountDto inaccount = accountService.getIn(teamName);
+		model.addAttribute("inaccount", inaccount);
+		
+		//지출
+		InAccountDto outaccount = accountService.getOut(teamName);
+		model.addAttribute("outaccount", outaccount);
+		
+		//합계
+		int sum = inaccount.getAccMoney() - outaccount.getAccMoney();
+		InAccountDto totalaccount = accountService.getIn(teamName);
+		totalaccount.setAccMoney(sum);
+		model.addAttribute("totalaccount", totalaccount);
+		
+		//음료
+		InAccountDto drinkaccount = accountService.getDrink(teamName);
+		model.addAttribute("drinkaccount", drinkaccount);
+		
+		//구장비
+		InAccountDto stadiumaccount = accountService.getStadium(teamName);
+		model.addAttribute("stadiumaccount", stadiumaccount);
+		
+		//물품비
+		InAccountDto goodsaccount = accountService.getGoods(teamName);
+		model.addAttribute("goodsaccount", goodsaccount);
+		
 		return "account/status";
 	}
+	
+//	@GetMapping(value = "/status")
+//	public String getDrink(InAccountDto accountDto,Principal principal, Model model) {
+//		String userId = principal.getName();
+//		MemberDto readDto = memberservice.get(userId);
+//		String teamName = readDto.getTeamName();
+//		//음료
+//		InAccountDto drinkaccount = accountService.getDrink(teamName);
+//		model.addAttribute("drinkaccount", drinkaccount);
+//		
+//		return "account/status";
+//	}
+	
+
 }

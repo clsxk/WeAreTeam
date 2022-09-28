@@ -118,7 +118,7 @@ public class MemberController {
 	public String create(MemberDto memberVo, RedirectAttributes rttr) {
 		boolean result = service.create(memberVo);
 		rttr.addFlashAttribute("createResult", result);
-		return "/home"; 
+		return "redirect:/member/teamlist"; 
 	}
 	
 	/*팀이름 체크 */
@@ -195,6 +195,16 @@ public class MemberController {
 		MemberDto memberDto = service.get(userId);
 		model.addAttribute("member",memberDto);
 		return "member/readStandby";
+	}
+	
+	
+	//내정보 보기
+	@GetMapping(value = "/member/myread")
+	public String get(Principal principal,String userId, Model model) {
+		userId = principal.getName();
+		MemberDto memberDto = service.get(userId);
+		model.addAttribute("member",memberDto);
+		return "member/myread";
 	}
 	
 }

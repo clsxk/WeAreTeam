@@ -52,6 +52,24 @@ $(document).ready(function() {
 
 </script>
 
+<style>
+
+.new-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  max-width: 650px;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #e3e6f0;
+  border-radius: 0.35rem;
+   margin: auto;
+}
+
+</style>
+
 
 <head>
 
@@ -78,12 +96,12 @@ $(document).ready(function() {
 
     <div class="container">
  
-        <div class="card o-hidden border-0 shadow-lg my-5">
-            <div class="card-body p-0">
+        <div class="new-card o-hidden border-0 shadow-lg my-5">
+           <!--  <div class="card-body p-0"> -->
                 <!-- Nested Row within Card Body -->
-                <div class="row">
+<!--                 <div class="row">
                     <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
-                    <div class="col-lg-7">
+                    <div class="col-lg-7"> -->
                         <div class="p-5">
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">회원가입</h1>
@@ -115,11 +133,11 @@ $(document).ready(function() {
   									<input type="number" class="form-control form-control-user" name="userAge" placeholder="나이">
   								</div>
   								
-  								<div class="form-group">
+<!--   								<div class="form-group">
   									<div class="form-check-form-check-solid">
   										<input class="form-check-input" type="radio" id="user" name="role" value="ROLE_USER" checked>
   										<label class="form-check-label" for="user">유저</label>			
-  									</div>
+  									</div> -->
   	<!--  								
   									  <div class="form-check-form-check-solid">
   										<input class="form-check-input" type="radio" id="admin" name="role" value="ROLE_MEMBER">
@@ -130,12 +148,12 @@ $(document).ready(function() {
                             </form>
 
                         </div>
-                    </div>
+                    <!-- </div> -->
                 </div>
             </div>
-        </div>
+<!--         </div>
 
-    </div>
+    </div> -->
 
 	    	        <!-- Logout Modal-->
     			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

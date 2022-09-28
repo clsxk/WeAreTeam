@@ -44,21 +44,47 @@ SELECT ACC_NUM,A.TEAM_NAME,ACC_DIVISION,ACC_CONTENT,ACC_MONEY,ACC_DATE,ACC_NOTE
 </delete>
  
  
-
-<select id="selectIn" resultType="org.green.spring.account.domain.AccountDto">
-	SELECT TEAM_NAME,sum(acc_money)
+ <!-- 수입 합계 조회 -->
+<select id="selectIn" resultType="org.green.spring.account.domain.InAccountDto">
+	SELECT TEAM_NAME,sum(ACC_MONEY) as ACC_MONEY
 		FROM TEAM_ACCOUNT
 			WHERE ACC_DIVISION = '수입' AND TEAM_NAME = #{teamName}
-			GROUP BY TEAM_NAME,acc_money
+			GROUP BY TEAM_NAME
 </select>
  
  
-
-<select id="selectOut" resultType="org.green.spring.account.domain.AccountDto">
-	SELECT TEAM_NAME,sum(acc_money)
+ <!-- 지출 합계 조회 -->
+<select id="selectOut" resultType="org.green.spring.account.domain.InAccountDto">
+	SELECT TEAM_NAME,sum(ACC_MONEY) as ACC_MONEY
 		FROM TEAM_ACCOUNT
 			WHERE ACC_DIVISION = '지출' AND TEAM_NAME = #{teamName}
-			GROUP BY TEAM_NAME,acc_money
+			GROUP BY TEAM_NAME
+</select>
+
+
+ <!-- 음료비 합계 조회 -->
+<select id="selectDrink" resultType="org.green.spring.account.domain.InAccountDto">
+	SELECT TEAM_NAME,sum(ACC_MONEY) as ACC_MONEY
+		FROM TEAM_ACCOUNT
+			WHERE ACC_DIVISION = '지출' AND TEAM_NAME = #{teamName} AND ACC_CONTENT = '음료비'
+			GROUP BY TEAM_NAME
+</select>
+
+ <!-- 구장비 합계 조회 -->
+<select id="selectStadium" resultType="org.green.spring.account.domain.InAccountDto">
+	SELECT TEAM_NAME,sum(ACC_MONEY) as ACC_MONEY
+		FROM TEAM_ACCOUNT
+			WHERE ACC_DIVISION = '지출' AND TEAM_NAME = #{teamName} AND ACC_CONTENT = '구장비'
+			GROUP BY TEAM_NAME
+</select>
+
+
+ <!-- 물품비 합계 조회 -->
+<select id="selectGoods" resultType="org.green.spring.account.domain.InAccountDto">
+	SELECT TEAM_NAME,sum(ACC_MONEY) as ACC_MONEY
+		FROM TEAM_ACCOUNT
+			WHERE ACC_DIVISION = '지출' AND TEAM_NAME = #{teamName} AND ACC_CONTENT = '물품비'
+			GROUP BY TEAM_NAME
 </select>
 
 

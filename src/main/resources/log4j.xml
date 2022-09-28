@@ -32,6 +32,27 @@
 		<level value="info" />
 	</logger>
 
+<!-- SQL Logger -->
+	<logger name="jdbc.sqltiming">
+		<level value="info" />
+	</logger>
+	<logger name="jdbc.sqlonly">
+		<level value="off" />
+	</logger>
+	<logger name="jdbc.audit">
+		<level value="off" />
+	</logger>
+	<logger name="jdbc.resultset">
+		<level value="off" />
+	</logger>
+	<logger name="jdbc.resultsettable">
+		<level value="info" />
+	</logger>
+	<logger name="jdbc.connection">
+		<level value="off" />
+	</logger>
+
+
 	<!-- Root Logger -->
 	<root>
 		<priority value="warn" />

@@ -3,6 +3,7 @@ package org.green.spring.account.service;
 import java.util.List;
 
 import org.green.spring.account.domain.AccountDto;
+import org.green.spring.account.domain.InAccountDto;
 import org.green.spring.member.service.MemberService;
 
 import lombok.AllArgsConstructor;
@@ -20,8 +21,15 @@ public interface AccountService {
 	
 	public boolean remove(int accNum);
 	
-	public AccountDto getIn(String teamName);
+	public InAccountDto getIn(String teamName);
 	
-	public AccountDto getOut(String teamName);
+	public InAccountDto getOut(String teamName);
+	
+	public InAccountDto getDrink(String teamName);
+	
+	public InAccountDto getStadium(String teamName);
+	
+	public InAccountDto getGoods(String teamName);
+	
 
 }

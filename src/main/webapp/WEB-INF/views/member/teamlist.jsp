@@ -5,7 +5,25 @@
 
 	<%@include file="../includes/header.jsp" %>
 
-
+<script type="text/javascript">
+	$(document).ready(function() {
+		var createResult = '${createResult}';
+		checkRemoveModal(createResult);
+		function checkRemoveModal(result) {
+			if(result ===''){
+				return;
+			}
+			if(result == 'true'){
+				$(".modal-body").html("팀생성이 성공하였습니다. 로그아웃이 필요합니다");	
+			} else {
+				$(".modal-body").html("팀생성이 실패하였습니다");	
+			}
+			$("#myModal").modal("show");
+		}
+		
+		
+	})
+</script>
 	
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -48,6 +66,28 @@
                                     </tbody>
                                 </table>              
                             </div>
+
+			<!-- Modal 추가 -->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">처리결과</h5>
+							<button class="close" type="button" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">×</span>
+							</button>
+						</div>
+						<div class="modal-body"></div>
+						<div class="modal-footer">
+							<button class="btn btn-secondary" type="button"
+								data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
 
 
 		</div>
