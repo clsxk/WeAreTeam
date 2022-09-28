@@ -90,25 +90,31 @@
 					
 			<%-- <sec:authorize access="denyAll"> --%> 
 		
-			<sec:authorize access="hasRole('ROLE_ADMIN',)"> 
+			<sec:authorize access="hasRole('ROLE_ADMIN')"> 
 		
 			<!-- Nav Item - Pages -->
 			
-					<li class="nav-item">
-                <a href="/member/teamlist" class="nav-link">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>팀 검색</span></a>
-         </li>
-			
-			<li class = "nav-item">
+         <li class = "nav-item">
 				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#memberPages" aria-expanded="true" aria-controls="memberPages" >
 					<i class="fas fa-fw fa-folder"></i>
-					<span>팀 관리</span>
+					<span>팀원 관리</span>
 				</a>
 				<div id="memberPages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" href="/member/list">팀원 목록</a>
 						<a class="collapse-item" href="/member/standbyList">대기자 목록</a>
+					</div>
+				</div>
+						
+			</li>
+			
+			<li class = "nav-item">
+				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#matchPages" aria-expanded="true" aria-controls="matchPages" >
+					<i class="fas fa-fw fa-folder"></i>
+					<span>경기 관리</span>
+				</a>
+				<div id="matchPages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" href="/match/list">경기 일정</a>
 						<a class="collapse-item" href="/record/list">경기 기록</a>
 					</div>
@@ -149,19 +155,11 @@
                     <span>팀 생성</span></a>
          </li>
 
-
-		<li class="nav-item">
-                <a href="/member/teamlist" class="nav-link">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>팀 검색</span></a>
-         </li>
-         
-         
          	<!-- Nav Item - Pages -->
 			<li class = "nav-item">
 				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#memberPages" aria-expanded="true" aria-controls="memberPages" >
 					<i class="fas fa-fw fa-folder"></i>
-					<span>팀 관리(팀원)</span>
+					<span>팀원&경기일정</span>
 				</a>
 				<div id="memberPages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
@@ -180,8 +178,7 @@
 				</a>
 				<div id="boardPages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" href="#">수입&지출</a>
-						<a class="collapse-item" href="#">회계 현황</a> 
+						<a class="collapse-item" href="/account/status">회계 현황</a> 
 					</div>
 				</div>
 		</li>

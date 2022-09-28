@@ -7,8 +7,9 @@
 
 <!-- 목록조회 -->
 <select id="selectList" resultType = "org.green.spring.match.domain.MatchDto">
-	SELECT *
-		FROM TEAM_MATCH
+SELECT *
+        FROM TEAM_MATCH
+        	WHERE  TEAM_NAME = #{teamName}
 </select>
 
 <!-- 단건조회 -->
@@ -20,24 +21,24 @@
 
 <!-- 추가 -->
 <insert id="insert">
-	INSERT INTO TEAM_MATCH (MAT_NUM,MAT_DATE,MAT_STADIUM,MAT_MATCHTEAM,MAT_RESULT)
-		VALUES(TEAM_CALRENDAR_SEQ.NEXTVAL,SYSDATE,#{matchStadium},#{matchTeam},#{matchResult} )
+	INSERT INTO TEAM_MATCH (MAT_NUM,TEAM_NAME,MAT_DATE,MAT_STADIUM,MAT_MATCHTEAM,MAT_RESULT)
+		VALUES(TEAM_MATCH_SEQ.NEXTVAL,#{teamName},#{matchDate},#{matchStadium},#{matchTeam},#{matchResult} )
 		<selectKey keyProperty="matchNo" resultType="Integer">
-			SELECT MAX(MAT_NUM) AS no FROM TEAM_MATCH
+			SELECT MAX(MAT_NUM) AS matchNo FROM TEAM_MATCH
 		</selectKey>
 </insert>
 
 <!-- 수정 -->
 <update id="update">
 	UPDATE TEAM_MATCH 
-		SET MAT_DATE = #{matchDate}, CAR_STADIUM = #{matchStadium}, CAR_MATCHTEAM = #{matchTeam}, CAR_RESULT = #{matchResult}  
+		SET MAT_DATE = #{matchDate}, MAT_STADIUM = #{matchStadium}, MAT_MATCHTEAM = #{matchTeam}, MAT_RESULT = #{matchResult}  
 		WHERE MAT_NUM = #{matchNo} 
 </update>
 
 <!-- 삭제 -->
 <delete id="delete">
 	DELETE FROM TEAM_MATCH
-		WHERE CAR_NO = #{matchNo}
+		WHERE MAT_NO = #{matchNo}
 </delete>
 
 

@@ -39,7 +39,7 @@
 				</div>
 				<div class="form-group">
 					<label>경기날짜</label> 
-					<input class="form-control" name="matchDate" value = "<fmt:formatDate pattern='yyyy/MM/dd hh:mm' value='${match.matchDate}'/>" readonly/>
+					<input class="form-control" name="matchDate" value = "<fmt:formatDate pattern='yyyy/MM/dd' value='${match.matchDate}'/>" readonly/>
 				</div>
 				<div class="form-group">
 					<label>경기장</label>

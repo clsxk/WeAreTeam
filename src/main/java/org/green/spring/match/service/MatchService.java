@@ -8,7 +8,7 @@ public interface MatchService {
 
 	public MatchDto register(MatchDto dto);
 	
-	public List<MatchDto> getList();
+	public List<MatchDto> getList(String teamName);
 	
 	public MatchDto get(int matchNo);
 	

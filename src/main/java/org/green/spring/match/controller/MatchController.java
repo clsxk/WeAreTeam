@@ -5,7 +5,10 @@ import java.util.List;
 
 import org.green.spring.match.domain.MatchDto;
 import org.green.spring.match.service.MatchService;
+import org.green.spring.member.domain.MemberDto;
+import org.green.spring.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +23,10 @@ public class MatchController {
 
 	@Autowired
 	private MatchService matchService;
+	@Autowired
+	private MemberService memberservice;
 	
-	//등록
+	//등록화면
 	@GetMapping(value = "/register")
 	public String registerForm() {
 		return "match/registerForm";
@@ -30,22 +35,29 @@ public class MatchController {
 	//등록처리
 	@PostMapping(value = "/register")
 	public String register(MatchDto matchDto,RedirectAttributes rttr, Principal principal) {
-		/* String matchNo = principal.getName(); */
+		String userId = principal.getName();
+		MemberDto readDto = memberservice.get(userId);
+		String teamName = readDto.getTeamName();
+		matchDto.setTeamName(teamName);
 		MatchDto registerDto = matchService.register(matchDto);
 		rttr.addFlashAttribute("registerNo", registerDto.getMatchNo());
 		return "redirect:/match/list";
 	}
 	//목록
 	@GetMapping(value = "/list")
-	public String getList(Model model) {
-		List<MatchDto> matchList = matchService.getList();
+	public String getList(Model model,MatchDto matchDto, Principal principal) {
+		String userId = principal.getName();
+		MemberDto readDto = memberservice.get(userId);
+		String teamName = readDto.getTeamName();
+		matchDto.setTeamName(teamName);
+		List<MatchDto> matchList = matchService.getList(teamName);
 		model.addAttribute("matchList",matchList);
 		return "match/list";
 	}
 	
 	//상세
 	@GetMapping(value = "/read")
-	public String get(@RequestParam("matchNo") int matchNo, Model model) {
+	public String get(@DateTimeFormat(pattern = "yyyy-MM-dd") @RequestParam("matchNo") int matchNo, Model model) {
 		MatchDto match = matchService.get(matchNo);
 		model.addAttribute("match", match);
 		return "match/read";

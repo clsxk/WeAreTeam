@@ -28,9 +28,9 @@ public class MatchServiceImpl implements MatchService {
 	}
 
 	@Override
-	public List<MatchDto> getList() {
+	public List<MatchDto> getList(String teamName) {
 		log.info("get Match List......");
-		return repository.selectList();
+		return repository.selectList(teamName);
 	}
 
 	@Override

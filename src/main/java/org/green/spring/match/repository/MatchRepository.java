@@ -10,7 +10,7 @@ public interface MatchRepository {
 	public void insert(MatchDto dto);
 	
 	// 목록 읽기
-	public List<MatchDto> selectList();
+	public List<MatchDto> selectList(String teamName);
 	
 	// 단건 읽기
 	public MatchDto select(int matchNo);

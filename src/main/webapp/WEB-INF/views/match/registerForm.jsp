@@ -18,10 +18,10 @@
                         </div>
                         <div class="card-body">
 								<form role="form" action="/match/register" method="post">
-<!-- 								<div class="form-group">
+									<div class="form-group">
 										<label>경기날짜</label>
-										<input type="datetime-local" name="matchDate" />
-									</div>   -->
+										<input type="date" class="form-control" name="matchDate" rows="3" ></input>
+									</div> 
 									<div class="form-group">
 										<label>경기장</label>
 										<textarea class="form-control" name="matchStadium" rows="1" placeholder="경기장을 입력 하세요"></textarea>
@@ -38,10 +38,6 @@
     										<option value="무">무</option>
     										<option value="패">패</option>
 										</select>
-										<textarea class="form-control" name="matchTeam" rows="1" placeholder="팀득점"></textarea>
-										<textarea class="form-control" name="matchTeam" rows="1" placeholder="팀실점"></textarea>
-										<textarea class="form-control" name="matchTeam" rows="1" placeholder="골"></textarea>
-										<textarea class="form-control" name="matchTeam" rows="1" placeholder="어시"></textarea>
 									</div>
 
 									<button type="submit" class="btn btn-light">등록</button>

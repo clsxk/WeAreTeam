@@ -26,12 +26,12 @@ public class MatchRepositoryTests {
 //		log.info("CREATE 결과 : " + result);
 //	}
 	
-	@Test
-	public void 목록조회() {
-		for(MatchDto dto : repository.selectList()) {
-			log.info(dto.toString());
-		}
-	}
+//	@Test
+//	public void 목록조회() {
+//		for(MatchDto dto : repository.selectList(teamName)) {
+//			log.info(dto.toString());
+//		}
+//	}
 	
 	@Test
 	public void 단건조회() {

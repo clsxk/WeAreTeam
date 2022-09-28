@@ -60,6 +60,7 @@
                                     <thead>
                                         <tr>
                                             <th>번호</th>
+                                            <th>팀이름</th>
                                             <th>경기날짜</th>
                                             <th>경기장</th>
                                             <th>상대팀</th>        
@@ -70,7 +71,8 @@
                                      <c:forEach var="match" items="${matchList}">
                                      	<tr>
                                      		<td><a href="/match/read?matchNo=${match.matchNo}">${match.matchNo}</a></td>
-                                     		<td><fmt:formatDate value="${match.matchDate}" pattern="yyyy/MM/dd" /></td>
+                                     		<td>${match.teamName}</td>
+                                     		<td><fmt:formatDate value="${match.matchDate}" pattern="yyyy/MM/dd hh:mm" /></td>
                                      		<td>${match.matchStadium }</td>
 											<td>${match.matchTeam }</td>
 											<td>${match.matchResult }</td>
