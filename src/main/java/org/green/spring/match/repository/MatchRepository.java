@@ -3,6 +3,7 @@ package org.green.spring.match.repository;
 import java.util.List;
 
 import org.green.spring.match.domain.MatchDto;
+import org.green.spring.match.domain.RecordDto;
 
 public interface MatchRepository {
 	
@@ -20,5 +21,17 @@ public interface MatchRepository {
 	
 	// 삭제
 	public int delete(int matchNo);
+	
+	// 득점,어시 등록
+	public void insertPoint(RecordDto dto);
+	
+	// 득점,어시 추가
+	public int updatePoint(RecordDto dto);
+	
+	// 득점,어시 단건 읽기
+	public RecordDto selectPoint(int matchNo);
+	
+	// 득점,어시 삭제
+	public int deletePoint(int matchNo);
 
 }

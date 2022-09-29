@@ -65,7 +65,7 @@
                                             <th>경기장</th>
                                             <th>상대팀</th>        
                                             <th>경기결과</th>
-                                            <th>팀득정</th>
+                                            <th>팀득점</th>
                                             <th>팀실점</th>
                                         </tr>
                                     </thead>     
@@ -74,7 +74,7 @@
                                      	<tr>
                                      		<td><a href="/match/read?matchNo=${match.matchNo}">${match.matchNo}</a></td>
                                      		<td>${match.teamName}</td>
-                                     		<td><fmt:formatDate value="${match.matchDate}" pattern="yyyy/MM/dd hh:mm" /></td>
+                                     		<td>${match.matchDate }</td>
                                      		<td>${match.matchStadium }</td>
 											<td>${match.matchTeam }</td>
 											<td>${match.matchResult }</td>

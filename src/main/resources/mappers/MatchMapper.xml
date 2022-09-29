@@ -16,30 +16,68 @@ SELECT *
 <select id="select" resultType="org.green.spring.match.domain.MatchDto">
 	SELECT *
 		FROM TEAM_MATCH
-			WHERE MAT_NUM = #{matchNo}
+			WHERE MATCH_NO = #{matchNo}
 </select>
 
 <!-- 추가 -->
 <insert id="insert">
-	INSERT INTO TEAM_MATCH (MAT_NUM,TEAM_NAME,MAT_DATE,MAT_STADIUM,MAT_MATCHTEAM,MAT_RESULT,MAT_GOLE,MAT_LOSTPOINT)
+	INSERT INTO TEAM_MATCH (MATCH_NO,TEAM_NAME,MATCH_DATE,MATCH_STADIUM,MATCH_TEAM,MATCH_RESULT,MATCH_GOLE,MATCH_LOSTPOINT)
 		VALUES(TEAM_MATCH_SEQ.NEXTVAL,#{teamName},#{matchDate},#{matchStadium},#{matchTeam},#{matchResult},#{matchGole},#{matchLostPoint} )
 		<selectKey keyProperty="matchNo" resultType="Integer">
-			SELECT MAX(MAT_NUM) AS matchNo FROM TEAM_MATCH
+			SELECT MAX(MATCH_NO) AS matchNo FROM TEAM_MATCH
 		</selectKey>
 </insert>
 
 <!-- 수정 -->
 <update id="update">
 	UPDATE TEAM_MATCH 
-		SET MAT_DATE = #{matchDate}, MAT_STADIUM = #{matchStadium}, MAT_MATCHTEAM = #{matchTeam}, MAT_RESULT = #{matchResult},MAT_GOLE = #{matchGole},MAT_LOSTPOINT = #{matchLostPoint}  
-		WHERE MAT_NUM = #{matchNo} 
+		SET MATCH_DATE = #{matchDate}, MATCH_STADIUM = #{matchStadium}, MATCH_TEAM = #{matchTeam}, MATCH_RESULT = #{matchResult},MATCH_GOLE = #{matchGole},MATCH_LOSTPOINT = #{matchLostPoint}  
+		WHERE MATCH_NO = #{matchNo} 
 </update>
 
 <!-- 삭제 -->
 <delete id="delete">
 	DELETE FROM TEAM_MATCH
-		WHERE MAT_NO = #{matchNo}
+		WHERE MATCH_NO = #{matchNo}
 </delete>
 
+<!--
+개인 기록 조회 
+<select id="selectListPoint" resultType = "org.green.spring.match.domain.MatchDto">
+SELECT *
+    FROM TEAM_MATCH M
+    JOIN TEAM_RECORD R
+    ON(M.MATCH_NO = R.MATCH_NO )
+    WHERE R.USER_ID = #{userId} 
+</select>
+-->
+
+
+<!--득점,어시 기본값 -->
+<insert id="insertPoint">
+	INSERT INTO TEAM_RECORD (USER_ID, MATCH_NO, RECORD_GOLE, RECORD_ASSIST)
+		VALUES(null,#{matchNo},#{recordGole},#{recordAssist})
+</insert>
+
+<!-- 단건조회 -->
+<select id="selectPoint" resultType="org.green.spring.match.domain.RecordDto">
+	SELECT *
+		FROM TEAM_RECORD
+			WHERE MATCH_NO = #{matchNo}
+</select>
+
+<!-- 득점,어시 추가하기 -->
+<update id="updatePoint">
+	UPDATE TEAM_RECORD 
+		SET USER_ID = #{userId}, RECORD_GOLE = #{recordGole}, RECORD_ASSIST = #{recordAssist}
+		WHERE MATCH_NO = #{matchNo} 
+</update>
+
+
+<!-- 득점, 어시 삭제 -->
+<delete id="deletePoint">
+	DELETE FROM TEAM_RECORD
+		WHERE MATCH_NO = #{matchNo}
+</delete>
 
 </mapper>

@@ -61,6 +61,18 @@ $(document).ready(function() {
 										<label>팀실점</label>
 										<input type="number" class="form-control"  value="0" name="matchLostPoint" rows="3" placeholder="팀실점을 입력 하세요" />
 									</div>
+									<div class="form-group">
+										<label>득점자</label>
+										<textarea class="form-control" name="userId" rows="1" placeholder="득점자 입력 하세요"></textarea>
+									</div>
+									<div>
+										<label>골</label>
+										<input type="number" class="form-control"  value="0" name="recordGole" rows="3" placeholder="골 입력 하세요" />
+									</div>
+									<div>
+										<label>어시</label>
+										<input type="number" class="form-control"  value="0" name="recordAssist" rows="3" placeholder="어시 입력 하세요" />
+									</div>
 								</div>
 									<button type="submit" class="btn btn-light">등록</button>
 									<button type="reset" class="btn btn-light">리셋</button>

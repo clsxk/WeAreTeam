@@ -26,5 +26,4 @@ public class MatchDto {
 	private int matchGole;
 	private int matchLostPoint;
 	
-
 }

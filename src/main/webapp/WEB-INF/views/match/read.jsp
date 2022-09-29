@@ -37,13 +37,17 @@
 					<label>번호</label> 
 					<input class="form-control" name="matchNo" value="${match.matchNo}" readonly />
 				</div>
-				<div class="form-group">
+<%-- 				<div class="form-group">
 					<label>경기날짜</label> 
 					<input class="form-control" name="matchDate" value = "<fmt:formatDate pattern='yyyy/MM/dd' value='${match.matchDate}'/>" readonly/>
+				</div> --%>
+				<div class="form-group">
+					<label>경기날짜</label>
+					<input class="form-control" name="matchDate" value="${match.matchDate}" readonly/>
 				</div>
 				<div class="form-group">
 					<label>경기장</label>
-					<textarea class="form-control" name="matchStadium" rows="3" readonly>${match.matchStadium }</textarea>
+					<textarea class="form-control" name="matchStadium" rows="1" readonly>${match.matchStadium }</textarea>
 				</div>
 				<div class="form-group">
 					<label>상대팀</label>
@@ -61,8 +65,11 @@
 					<label>팀실점</label> 
 					<input class="form-control" name="matchLostPoint" value="${match.matchLostPoint}" readonly/>
 				</div>
+				
+				
+				
 
-				<a href="/match/modify?no=${board.no}" class="btn btn-light">수정</a>
+				<a href="/match/modify?matchNo=${match.matchNo}" class="btn btn-light">수정</a>
 				<a href="/match/list" class="btn btn-info">목록</a>
 				
 				<!-- Modal 추가 -->

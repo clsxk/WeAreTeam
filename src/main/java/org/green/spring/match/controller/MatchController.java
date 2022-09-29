@@ -4,6 +4,7 @@ import java.security.Principal;
 import java.util.List;
 
 import org.green.spring.match.domain.MatchDto;
+import org.green.spring.match.domain.RecordDto;
 import org.green.spring.match.service.MatchService;
 import org.green.spring.member.domain.MemberDto;
 import org.green.spring.member.service.MemberService;
@@ -26,6 +27,8 @@ public class MatchController {
 	@Autowired
 	private MemberService memberservice;
 	
+	
+	
 	//등록화면
 	@GetMapping(value = "/register")
 	public String registerForm() {
@@ -34,13 +37,16 @@ public class MatchController {
 	
 	//등록처리
 	@PostMapping(value = "/register")
-	public String register(MatchDto matchDto,RedirectAttributes rttr, Principal principal) {
+	public String register(MatchDto matchDto,RedirectAttributes rttr, Principal principal,RecordDto recordDto) {
 		String userId = principal.getName();
 		MemberDto readDto = memberservice.get(userId);
 		String teamName = readDto.getTeamName();
 		matchDto.setTeamName(teamName);
 		MatchDto registerDto = matchService.register(matchDto);
-		rttr.addFlashAttribute("registerNo", registerDto.getMatchNo());
+		int matchNo = matchDto.getMatchNo();
+		recordDto.setMatchNo(matchNo);		
+		RecordDto registerDto1 = matchService.registerPoint(recordDto);
+		rttr.addFlashAttribute("registerNo", registerDto1.getMatchNo());
 		return "redirect:/match/list";
 	}
 	//목록
@@ -57,9 +63,11 @@ public class MatchController {
 	
 	//상세
 	@GetMapping(value = "/read")
-	public String get(@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm") @RequestParam("matchNo") int matchNo, Model model) {
+	public String get(@RequestParam("matchNo") int matchNo, Model model) {
 		MatchDto match = matchService.get(matchNo);
 		model.addAttribute("match", match);
+		RecordDto record = matchService.getPoint(matchNo);
+		model.addAttribute("record", record);
 		return "match/read";
 	}
 	
@@ -68,20 +76,32 @@ public class MatchController {
 	public String modifyForm(@RequestParam("matchNo") int matchNo, Model model) {
 		MatchDto match = matchService.get(matchNo);
 		model.addAttribute("match", match);
+		
+		RecordDto record = matchService.getPoint(matchNo);
+		model.addAttribute("record", record);
+		
 		return "match/modifyForm";
 	}
 	
+	//수정처리
 	@PostMapping(value = "/modify")
-	public String modify(MatchDto matchVo, RedirectAttributes rttr) {
+	public String modify(MatchDto matchVo, RedirectAttributes rttr,RecordDto recordVo) {
 		boolean result = matchService.modify(matchVo);
+		boolean result1 = matchService.modifyPoint(recordVo);
+		rttr.addFlashAttribute("modifyResult1",result1);
 		rttr.addFlashAttribute("modifyResult",result);
 		return "redirect:/match/read?matchNo=" + matchVo.getMatchNo();
 	}
 	
+	//삭제처리
 	@GetMapping(value ="/remove")
 	public String remove(@RequestParam("matchNo")int matchNo, RedirectAttributes rttr) {
 		boolean result = matchService.remove(matchNo);
 		rttr.addFlashAttribute("removeResult",result);
+		
+		boolean result1 = matchService.removePoint(matchNo);
+		rttr.addFlashAttribute("removeResult1",result1);
+		
 		return "redirect:/match/list";
 	}
 	
@@ -96,4 +116,15 @@ public class MatchController {
 		model.addAttribute("matchList",matchList);
 		return "match/memberlist";
 	}
+	
+	
+	/*
+	 * //개인 골,어시 등록처리
+	 * 
+	 * @PostMapping(value = "/modify") public String registerPoint(RecordDto
+	 * recordDto,RedirectAttributes rttr, Principal principal) { RecordDto
+	 * registerDto = matchService.registerPoint(recordDto);
+	 * rttr.addFlashAttribute("registerPoint", registerDto.getUserId()); return
+	 * "redirect:/match/list"; }
+	 */
 }

@@ -3,6 +3,7 @@ package org.green.spring.match.service;
 import java.util.List;
 
 import org.green.spring.match.domain.MatchDto;
+import org.green.spring.match.domain.RecordDto;
 
 public interface MatchService {
 
@@ -16,4 +17,11 @@ public interface MatchService {
 	
 	public boolean remove(int matchNo);
 	
+	public RecordDto registerPoint(RecordDto dto);
+	
+	public boolean modifyPoint(RecordDto dto);
+	
+	public RecordDto getPoint(int matchNo);
+	
+	public boolean removePoint(int matchNo);
 }

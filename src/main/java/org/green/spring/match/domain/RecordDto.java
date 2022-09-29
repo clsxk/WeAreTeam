@@ -15,9 +15,9 @@ import lombok.ToString;
 @NoArgsConstructor
 public class RecordDto {
 	
-	int matchNum;
-	String teamName;
-	int recGole;
-	int recAssist;
+	String userId;
+	int matchNo;
+	int recordGole;
+	int recordAssist;
 	
 }
