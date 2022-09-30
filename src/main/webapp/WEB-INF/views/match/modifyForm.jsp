@@ -18,6 +18,18 @@ $(document).ready(function() {
 	  }); 
 	}); 
 
+
+function add_div(){    
+	var div = document.createElement('div');    
+	div.innerHTML = document.getElementById('room_type').innerHTML;    
+	document.getElementById('field').appendChild(div);
+	}
+
+function remove_div(obj){document.getElementById('field').removeChild(obj.parentNode);
+
+	}
+
+
 </script>
 
 	
@@ -68,31 +80,49 @@ $(document).ready(function() {
 										<label>팀실점</label>
 										<input type="number" class="form-control"  rows="3" name="matchLostPoint" value="${match.matchLostPoint}" />
 									</div>
-									<div class="form-group">
-										<label>득점자</label>
-									<select id="recordPoint" class = "form-control">
-										<c:forEach items="${nameList}" var="nameList">
-											<option><c:out value="${record.userName}" /></option>
-										</c:forEach>
-									</select>
-									</div>
-									
-									<div class="form-group">
-										<label>골</label>
-										<input type="number" class="form-control"  rows="3" name="recordGole" value="${record.recordGole}" />
-									</div>
-									<div>
-									<div class="form-group">
-										<label>어시</label>
-										<input type="number" class="form-control"  rows="3" name="recordAssist"  value="${record.recordAssist}"   />
-									</div>
-								</div>
-								
+
+					<div id="room_type">
+
+						<div class="form-group"
+							style="border: 1px; float: left; width: 30%;">
+							<label for="image">득점자</label> <select id="recordPoint"
+								class="form-control">
+								<c:forEach items="${nameList}" var="name">
+									<option><c:out value="${name}" /></option>
+								</c:forEach>
+							</select>
 						</div>
-								
-							<button type="submit" class="btn btn-light">수정</button>
+						<div class="form-group"
+							style="border: 1px; float: left; width: 30%;">
+							<label>골</label> <input type="number" class="form-control"
+								rows="3" name="recordGole" value="${record.recordGole}" />
+						</div>
+						<div>
+							<div class="form-group"
+								style="border: 1px; float: left; width: 30%;">
+								<label>어시</label> <input type="number" class="form-control"
+									rows="3" name="recordAssist" value="${record.recordAssist}" />
+							</div>
+						</div>
+						<div class="form-group"
+							style="border: 1px; float: left; width: 10;">
+							<input type="button" class="btn btn-light" value="추가"
+								onclick="add_div()"><br />
+						</div>
+						<input type="button" style="border: 1px; float: left; width: 10;"
+							" class="btn btn-light" value="삭제" onclick="remove_div(this)">
+					</div>
+
+					<div id="field"></div>
+
+				</div>
+						
+			
+						<div class="form-group" style="border: 1px ; float: left;">
+						<button type="submit" class="btn btn-light">수정</button>
 						<a href="/match/remove?matchNo=${match.matchNo}" class="btn btn-danger">삭제</a>
 						<a href="/match/list" class="btn btn-info">목록</a>
+						</div>
 							</form>
 						
                         </div>

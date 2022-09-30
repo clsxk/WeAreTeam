@@ -39,16 +39,13 @@ public class MatchController {
 	
 	//등록처리
 	@PostMapping(value = "/register")
-	public String register(MatchDto matchDto,RedirectAttributes rttr, Principal principal,RecordDto recordDto) {
+	public String register(MatchDto matchDto,RedirectAttributes rttr, Principal principal) {
 		String userId = principal.getName();
 		MemberDto readDto = memberservice.get(userId);
 		String teamName = readDto.getTeamName();
 		matchDto.setTeamName(teamName);
 		MatchDto registerDto = matchService.register(matchDto);
-		int matchNo = matchDto.getMatchNo();
-		recordDto.setMatchNo(matchNo);		
-		RecordDto registerDto1 = matchService.registerPoint(recordDto);
-		rttr.addFlashAttribute("registerNo", registerDto1.getMatchNo());
+
 		return "redirect:/match/list";
 	}
 	//목록
@@ -75,7 +72,7 @@ public class MatchController {
 	
 	//수정화면
 	@GetMapping(value = "/modify")
-	public String modifyForm(@RequestParam("matchNo") int matchNo, Model model,Principal principal) {
+	public String modifyForm(@RequestParam("matchNo") int matchNo, Model model,Principal principal,RecordDto recordDto) {
 		String userId = principal.getName();
 		MemberDto readDto = memberservice.get(userId);
 		String teamName = readDto.getTeamName();
@@ -87,8 +84,10 @@ public class MatchController {
 		RecordDto record = matchService.getPoint(matchNo);
 		model.addAttribute("record", record);
 		
+		
+		
 		List<RecordDto> recordList = matchService.getListPoint(teamName);
-		List<String> nameList = recordList.stream().map(RecordDto::getUserName).collect(Collectors.toList());
+		List<Object> nameList = recordList.stream().map(RecordDto::getUserName).collect(Collectors.toList());
 		model.addAttribute("nameList",nameList);
 		
 		return "match/modifyForm";
@@ -101,8 +100,15 @@ public class MatchController {
 		boolean result = matchService.modify(matchVo);
 		rttr.addFlashAttribute("modifyResult",result);
 		
-		boolean result1 = matchService.modifyPoint(recordVo);
-		rttr.addFlashAttribute("modifyResult1",result1);
+		/*
+		 * boolean result1 = matchService.modifyPoint(recordVo);
+		 * rttr.addFlashAttribute("modifyResult1",result1);
+		 */
+				
+		RecordDto registerDto1 = matchService.registerPoint(recordVo);
+		rttr.addFlashAttribute("registerNo", registerDto1.getMatchNo());
+		
+		
 		
 		return "redirect:/match/read?matchNo=" + matchVo.getMatchNo();
 	}
