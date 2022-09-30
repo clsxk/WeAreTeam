@@ -55,7 +55,7 @@ SELECT *
 
 <!--득점,어시 기본값 -->
 <insert id="insertPoint">
-	INSERT INTO TEAM_RECORD (USER_ID, MATCH_NO, RECORD_GOLE, RECORD_ASSIST)
+	INSERT INTO TEAM_RECORD (USER_NAME, MATCH_NO, RECORD_GOLE, RECORD_ASSIST)
 		VALUES(null,#{matchNo},#{recordGole},#{recordAssist})
 </insert>
 
@@ -69,7 +69,7 @@ SELECT *
 <!-- 득점,어시 추가하기 -->
 <update id="updatePoint">
 	UPDATE TEAM_RECORD 
-		SET USER_ID = #{userId}, RECORD_GOLE = #{recordGole}, RECORD_ASSIST = #{recordAssist}
+		SET USER_NAME = #{userName}, RECORD_GOLE = #{recordGole}, RECORD_ASSIST = #{recordAssist}
 		WHERE MATCH_NO = #{matchNo} 
 </update>
 
@@ -79,5 +79,15 @@ SELECT *
 	DELETE FROM TEAM_RECORD
 		WHERE MATCH_NO = #{matchNo}
 </delete>
+
+<!-- SELECT박스 인원 조회 -->
+<!-- 단건조회 -->
+<select id="selectListPoint" resultType="org.green.spring.match.domain.RecordDto">
+SELECT USER_NAME
+		FROM TEAM_USERS	
+			WHERE
+				(ROLE='ROLE_MEMBER' OR ROLE = 'ROLE_ADMIN') AND TEAM_NAME = #{teamName} and TEAM_JOIN = 'ACCESS' 
+</select>
+
 
 </mapper>

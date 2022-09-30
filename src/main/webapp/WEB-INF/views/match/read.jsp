@@ -65,6 +65,18 @@
 					<label>팀실점</label> 
 					<input class="form-control" name="matchLostPoint" value="${match.matchLostPoint}" readonly/>
 				</div>
+				<div class="form-group">
+					<label>득점자</label> 
+					<input class="form-control" name="userName" value="${record.userName}" readonly/>
+				</div>
+				<div class="form-group">
+					<label>골</label> 
+					<input class="form-control" name="recordGole" value="${record.recordGole}" readonly/>
+				</div>
+				<div class="form-group">
+					<label>어시</label> 
+					<input class="form-control" name="recordAssist" value="${record.recordAssist}" readonly/>
+				</div>
 				
 				
 				

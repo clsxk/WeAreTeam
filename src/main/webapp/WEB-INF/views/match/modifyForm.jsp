@@ -17,6 +17,7 @@ $(document).ready(function() {
 	    }
 	  }); 
 	}); 
+
 </script>
 
 	
@@ -69,17 +70,26 @@ $(document).ready(function() {
 									</div>
 									<div class="form-group">
 										<label>득점자</label>
-										<textarea class="form-control" value="${record.userId} name="userId" rows="1" ></textarea>
+									<select id="recordPoint" class = "form-control">
+										<c:forEach items="${nameList}" var="nameList">
+											<option><c:out value="${record.userName}" /></option>
+										</c:forEach>
+									</select>
 									</div>
-									<div>
+									
+									<div class="form-group">
 										<label>골</label>
-										<input type="number" class="form-control"  value="${record.recordGole} name="recordGole" rows="3"  />
+										<input type="number" class="form-control"  rows="3" name="recordGole" value="${record.recordGole}" />
 									</div>
 									<div>
+									<div class="form-group">
 										<label>어시</label>
-										<input type="number" class="form-control"   value="${record.recordAssist} name="recordAssist" rows="3" />
+										<input type="number" class="form-control"  rows="3" name="recordAssist"  value="${record.recordAssist}"   />
 									</div>
 								</div>
+								
+						</div>
+								
 							<button type="submit" class="btn btn-light">수정</button>
 						<a href="/match/remove?matchNo=${match.matchNo}" class="btn btn-danger">삭제</a>
 						<a href="/match/list" class="btn btn-info">목록</a>

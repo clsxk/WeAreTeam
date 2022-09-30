@@ -33,5 +33,9 @@ public interface MatchRepository {
 	
 	// 득점,어시 삭제
 	public int deletePoint(int matchNo);
+	
+	// 득점 인원조회
+	public List<RecordDto> selectListPoint(String teamName);
+	
 
 }

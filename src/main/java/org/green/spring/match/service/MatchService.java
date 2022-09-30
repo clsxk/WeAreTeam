@@ -24,4 +24,6 @@ public interface MatchService {
 	public RecordDto getPoint(int matchNo);
 	
 	public boolean removePoint(int matchNo);
+	
+	public List<RecordDto> getListPoint(String teamName);
 }

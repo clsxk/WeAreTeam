@@ -2,6 +2,8 @@ package org.green.spring.match.controller;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.green.spring.match.domain.MatchDto;
 import org.green.spring.match.domain.RecordDto;
@@ -73,12 +75,21 @@ public class MatchController {
 	
 	//수정화면
 	@GetMapping(value = "/modify")
-	public String modifyForm(@RequestParam("matchNo") int matchNo, Model model) {
+	public String modifyForm(@RequestParam("matchNo") int matchNo, Model model,Principal principal) {
+		String userId = principal.getName();
+		MemberDto readDto = memberservice.get(userId);
+		String teamName = readDto.getTeamName();
+		
+		
 		MatchDto match = matchService.get(matchNo);
 		model.addAttribute("match", match);
 		
 		RecordDto record = matchService.getPoint(matchNo);
 		model.addAttribute("record", record);
+		
+		List<RecordDto> recordList = matchService.getListPoint(teamName);
+		List<String> nameList = recordList.stream().map(RecordDto::getUserName).collect(Collectors.toList());
+		model.addAttribute("nameList",nameList);
 		
 		return "match/modifyForm";
 	}
@@ -86,10 +97,13 @@ public class MatchController {
 	//수정처리
 	@PostMapping(value = "/modify")
 	public String modify(MatchDto matchVo, RedirectAttributes rttr,RecordDto recordVo) {
+
 		boolean result = matchService.modify(matchVo);
+		rttr.addFlashAttribute("modifyResult",result);
+		
 		boolean result1 = matchService.modifyPoint(recordVo);
 		rttr.addFlashAttribute("modifyResult1",result1);
-		rttr.addFlashAttribute("modifyResult",result);
+		
 		return "redirect:/match/read?matchNo=" + matchVo.getMatchNo();
 	}
 	
@@ -107,24 +121,14 @@ public class MatchController {
 	
 	//목록(팀원)
 	@GetMapping(value = "/memberlist")
-	public String getList1(Model model,MatchDto matchDto, Principal principal) {
+	public String getList1(Model model,RecordDto recordDto, Principal principal) {
 		String userId = principal.getName();
 		MemberDto readDto = memberservice.get(userId);
 		String teamName = readDto.getTeamName();
-		matchDto.setTeamName(teamName);
 		List<MatchDto> matchList = matchService.getList(teamName);
 		model.addAttribute("matchList",matchList);
 		return "match/memberlist";
 	}
 	
 	
-	/*
-	 * //개인 골,어시 등록처리
-	 * 
-	 * @PostMapping(value = "/modify") public String registerPoint(RecordDto
-	 * recordDto,RedirectAttributes rttr, Principal principal) { RecordDto
-	 * registerDto = matchService.registerPoint(recordDto);
-	 * rttr.addFlashAttribute("registerPoint", registerDto.getUserId()); return
-	 * "redirect:/match/list"; }
-	 */
 }

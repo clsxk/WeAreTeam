@@ -110,6 +110,12 @@ public class MatchServiceImpl implements MatchService {
 		}
 		
 	}
+
+	@Override
+	public List<RecordDto> getListPoint(String teamName) {
+		log.info("get userName List......");
+		return repository.selectListPoint(teamName);
+	}
 	
 
 }
