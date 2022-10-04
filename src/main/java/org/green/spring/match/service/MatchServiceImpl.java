@@ -4,6 +4,7 @@ import java.util.List;
 
 
 import org.green.spring.match.domain.MatchDto;
+import org.green.spring.match.domain.MatchRecordDto;
 import org.green.spring.match.domain.RecordDto;
 import org.green.spring.match.repository.MatchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,34 +74,30 @@ public class MatchServiceImpl implements MatchService {
 	}
 
 	@Override
-	public RecordDto registerPoint(RecordDto dto) {
+	public List<RecordDto> registerPoint(List<RecordDto> dto) {
 		log.info("Match registerPoint ......" + dto);
 		repository.insertPoint(dto);		
 		return dto ;
 	}
 
-	@Override
-	public boolean modifyPoint(RecordDto dto) {
-		RecordDto readDto = repository.selectPoint(dto.getMatchNo());
-		if (readDto == null) {
-			log.info("해당 매치는 존재하지않습니다");
-			return false;
-		} else {
-			log.info("modify....." + dto);
-			return repository.updatePoint(dto) == 1; 
-		}
-		
-	}
+	/*
+	 * @Override public boolean modifyPoint(RecordDto dto) { RecordDto readDto =
+	 * repository.selectPoint(dto.getMatchNo()); if (readDto == null) {
+	 * log.info("해당 매치는 존재하지않습니다"); return false; } else { log.info("modify....." +
+	 * dto); return repository.updatePoint(dto) == 1; }
+	 * 
+	 * }
+	 */
 
 	@Override
-	public RecordDto getPoint(int matchNo) {
+	public List<RecordDto> getPoint(int matchNo) {
 		log.info("get......" + matchNo);
 		return repository.selectPoint(matchNo);
 	}
 
 	@Override
 	public boolean removePoint(int matchNo) {
-		RecordDto readDto = repository.selectPoint(matchNo);
+		List<RecordDto> readDto = repository.selectPoint(matchNo);
 		if(readDto == null) {
 			log.info("해당 매치는 존재하지않습니다.");
 			return false;
@@ -115,6 +112,18 @@ public class MatchServiceImpl implements MatchService {
 	public List<RecordDto> getListPoint(String teamName) {
 		log.info("get userName List......");
 		return repository.selectListPoint(teamName);
+	}
+
+	@Override
+	public List<RecordDto> getRecordList(String teamName) {
+		log.info("get Record List....");
+		return repository.selectRecordList(teamName);
+	}
+
+	@Override
+	public MatchRecordDto getMatch(String teamName) {
+		log.info("get Match record List....");
+		return repository.selectMatchRecord(teamName);
 	}
 	
 

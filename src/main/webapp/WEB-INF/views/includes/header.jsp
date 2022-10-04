@@ -116,7 +116,7 @@
 				<div id="matchPages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" href="/match/list">경기 일정</a>
-						<a class="collapse-item" href="/record/list">경기 기록</a>
+						<a class="collapse-item" href="/match/recordlist">경기 기록</a>
 					</div>
 				</div>
 						
@@ -165,7 +165,7 @@
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" href="/member/memberlist">팀원 목록</a>
 						<a class="collapse-item" href="/match/memberlist">경기 일정</a>
-						<a class="collapse-item" href="#">경기 기록</a>
+						<a class="collapse-item" href="/match/recordlist">경기 기록</a>
 					</div>
 				</div>
 						

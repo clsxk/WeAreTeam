@@ -37,10 +37,6 @@
 					<label>번호</label> 
 					<input class="form-control" name="matchNo" value="${match.matchNo}" readonly />
 				</div>
-<%-- 				<div class="form-group">
-					<label>경기날짜</label> 
-					<input class="form-control" name="matchDate" value = "<fmt:formatDate pattern='yyyy/MM/dd' value='${match.matchDate}'/>" readonly/>
-				</div> --%>
 				<div class="form-group">
 					<label>경기날짜</label>
 					<input class="form-control" name="matchDate" value="${match.matchDate}" readonly/>
@@ -65,7 +61,7 @@
 					<label>팀실점</label> 
 					<input class="form-control" name="matchLostPoint" value="${match.matchLostPoint}" readonly/>
 				</div>
-				<div class="form-group">
+<%-- 				<div class="form-group">
 					<label>득점자</label> 
 					<input class="form-control" name="userName" value="${record.userName}" readonly/>
 				</div>
@@ -76,12 +72,27 @@
 				<div class="form-group">
 					<label>어시</label> 
 					<input class="form-control" name="recordAssist" value="${record.recordAssist}" readonly/>
+				</div> --%>
+			<c:forEach var ="record" items="${pointList}"> 
+			<div class="form-group" style="border: 1px; float: left; width: 33%;">
+				<label>득점자</label> <input type="text" class="form-control" rows="3"
+					name="recordGole" value="${record.userName}" readonly/>
+			</div>
+			<div class="form-group" style="border: 1px; float: left; width: 33%;">
+				<label>골</label> <input type="number" class="form-control" rows="3"
+					name="recordGole" value="${record.recordGole}" readonly/>
+			</div>
+			<div>
+				<div class="form-group"
+					style="border: 1px; float: left; width: 33%;">
+					<label>어시</label> <input type="number" class="form-control"
+						rows="3" name="recordAssist" value="${record.recordAssist}" readonly/>
 				</div>
-				
-				
-				
+			</div>
+			</c:forEach>
 
-				<a href="/match/modify?matchNo=${match.matchNo}" class="btn btn-light">수정</a>
+
+			<a href="/match/modify?matchNo=${match.matchNo}" class="btn btn-light">수정</a>
 				<a href="/match/list" class="btn btn-info">목록</a>
 				
 				<!-- Modal 추가 -->

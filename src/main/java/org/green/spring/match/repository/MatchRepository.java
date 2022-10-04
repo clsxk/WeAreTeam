@@ -3,6 +3,7 @@ package org.green.spring.match.repository;
 import java.util.List;
 
 import org.green.spring.match.domain.MatchDto;
+import org.green.spring.match.domain.MatchRecordDto;
 import org.green.spring.match.domain.RecordDto;
 
 public interface MatchRepository {
@@ -23,13 +24,14 @@ public interface MatchRepository {
 	public int delete(int matchNo);
 	
 	// µæÁ¡,¾î½Ã µî·Ï
-	public void insertPoint(RecordDto dto);
+//	public void insertPoint(RecordDto dto);
+	public void insertPoint(List<RecordDto> dto);
 	
 	// µæÁ¡,¾î½Ã Ãß°¡
 	public int updatePoint(RecordDto dto);
 	
 	// µæÁ¡,¾î½Ã ´Ü°Ç ÀÐ±â
-	public RecordDto selectPoint(int matchNo);
+	public List<RecordDto> selectPoint(int matchNo);
 	
 	// µæÁ¡,¾î½Ã »èÁ¦
 	public int deletePoint(int matchNo);
@@ -37,5 +39,10 @@ public interface MatchRepository {
 	// µæÁ¡ ÀÎ¿øÁ¶È¸
 	public List<RecordDto> selectListPoint(String teamName);
 	
+	// ÆÀ¿ø ÀüÃ¼ ±â·Ï Á¶È¸
+	public List<RecordDto> selectRecordList(String teamName);
+	
+	// ÆÀ  ±â·Ï Á¶È¸
+	public MatchRecordDto selectMatchRecord(String teamName);
 
 }

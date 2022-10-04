@@ -43,7 +43,7 @@
 			</div>
 			<div class="form-group">
 				<label>지출 물품비 합계</label>
-				<input type="number" class="form-control" name="accMoney"   value="${goodsaccount.accMoney} " readonly/>
+				<input type="number" class="form-control" name="accMoney"   value="${goodsaccount.accMoney}" readonly/>
 			</div>
 				
 				<a href="/account/list" class="btn btn-info">목록</a>

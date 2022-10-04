@@ -4,18 +4,15 @@
 
 <%@include file="includes/header.jsp"%>
 
-
-<div class="container-fluid">
-
-	    
-	    <h1 class="h3 mb-4 text-gray-800">안녕하세요</h1>
-	    <h1 class="h3 mb-4 text-gray-800">사용자이름 : <sec:authentication property="principal.Username" /></h1>
-	    <h1 class="h3 mb-4 text-gray-800">사용자권한 : <sec:authentication property="principal.authorities" /></h1>
-	    
-	    
+<div style="text-align : center;">
+<p><img src="resources/img/welcome.png"> </p>
 </div>
 
-
+<%-- <div class="container-fluid">	    
+	    <h1 class="h3 mb-4 text-gray-800">안녕하세요</h1>
+	    <h1 class="h3 mb-4 text-gray-800">사용자이름 : <sec:authentication property="principal.Username" /></h1>
+	    <h1 class="h3 mb-4 text-gray-800">사용자권한 : <sec:authentication property="principal.authorities" /></h1>	    
+</div> --%>
 
 
 

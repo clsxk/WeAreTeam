@@ -16,6 +16,19 @@ $(document).ready(function() {
 	    }
 	  }); 
 	}); 
+	
+	
+function add_div(){    
+	var div = document.createElement('div');    
+	div.innerHTML = document.getElementById('room_type').innerHTML;    
+	document.getElementById('field').appendChild(div);
+	}
+
+function remove_div(obj){document.getElementById('field').removeChild(obj.parentNode);
+
+	}
+	
+	
 </script>
 	
 	
@@ -52,7 +65,10 @@ $(document).ready(function() {
     										<option value="패">패</option>
 										</select>
 									</div>
+									
+									
 									<div class="point" style="display:none">
+									
 									<div class="form-group">
 										<label>팀득점</label>
 										<input type="number" class="form-control"  value="0" name="matchGole" rows="3" placeholder="팀득점을 입력 하세요" />
@@ -61,7 +77,8 @@ $(document).ready(function() {
 										<label>팀실점</label>
 										<input type="number" class="form-control"  value="0" name="matchLostPoint" rows="3" placeholder="팀실점을 입력 하세요" />
 									</div>
-									<div class="form-group">
+									
+									<!-- <div class="form-group">
 										<label>득점자</label>
 										<textarea class="form-control" name="userId" rows="1" placeholder="득점자 입력 하세요"></textarea>
 									</div>
@@ -73,9 +90,51 @@ $(document).ready(function() {
 										<label>어시</label>
 										<input type="number" class="form-control"  value="0" name="recordAssist" rows="3" placeholder="어시 입력 하세요" />
 									</div>
-								</div>
+									 -->
+						<div id="room_type">
+					
+						
+						<div class="form-group"
+							style="border: 1px; float: left; width: 31%;">
+							<label for="image">득점자</label> 
+							<select class="form-control" name ="userName">
+								<c:forEach items="${nameList}" var="name" >
+									<option><c:out value="${name}" /></option>
+								</c:forEach>
+							</select>
+						</div>
+						<div class="form-group"
+							style="border: 1px; float: left; width: 30.5%;">
+							<label>골</label> 
+							<input type="number" class="form-control" rows="3" name="recordGole"  />
+						</div>
+							<div class="form-group"
+								style="border: 1px; float: left; width: 31%;">
+								<label>어시</label> 
+								<input type="number" class="form-control" rows="3" name="recordAssist"  />
+							</div>
+						
+
+
+						<div class="form-group"
+							style="border: 1px; float: left; width: 10;">
+							<input type="button" class="btn btn-light" value="추가"
+								onclick="add_div()"><br />
+						</div>
+						<input type="button" style="border: 1px; float: left; width: 10;"
+							 class="btn btn-light" value="삭제" onclick="remove_div(this)">
+							
+					</div>
+					
+					<div id="field"></div>
+									
+					</div>
+
+								
+								<div class="form-group" style="border: 1px ; float: left;">
 									<button type="submit" class="btn btn-light">등록</button>
 									<button type="reset" class="btn btn-light">리셋</button>
+								</div>
 								</form>							
                         </div>
                     </div>

@@ -30,6 +30,10 @@
 				<input class="form-control" name="userAge"  value="${member.userAge}" />
 			</div>
 			<div class="form-group">
+				<label>팀이름</label>
+				<input class="form-control" name="teamName"  value="${member.teamName}" readonly/>
+			</div>
+			<div class="form-group">
 				<label>등급</label>
 				<input class="form-control" name="role" value="${member.role}" readonly/>
 			</div>

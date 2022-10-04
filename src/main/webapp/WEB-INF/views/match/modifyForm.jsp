@@ -71,7 +71,7 @@ function remove_div(obj){document.getElementById('field').removeChild(obj.parent
 										</select>
 									</div>
 
-								<div class="point" style="display:none">
+					<div class="point" style="display:none">
 									<div class="form-group">
 										<label>팀득점</label>
 										<input type="number" class="form-control" rows="3" name="matchGole" value="${match.matchGole}"   />
@@ -80,30 +80,33 @@ function remove_div(obj){document.getElementById('field').removeChild(obj.parent
 										<label>팀실점</label>
 										<input type="number" class="form-control"  rows="3" name="matchLostPoint" value="${match.matchLostPoint}" />
 									</div>
-
+					
 					<div id="room_type">
-
+					
+						<c:forEach var ="record" items="${pointList}">
 						<div class="form-group"
 							style="border: 1px; float: left; width: 30%;">
-							<label for="image">득점자</label> <select id="recordPoint"
-								class="form-control">
-								<c:forEach items="${nameList}" var="name">
+							<label for="image">득점자</label> 
+							<select class="form-control" name ="userName">
+								<option value="userName" selected>${record.userName}</option>
+								<c:forEach items="${nameList}" var="name" >
 									<option><c:out value="${name}" /></option>
 								</c:forEach>
 							</select>
 						</div>
 						<div class="form-group"
 							style="border: 1px; float: left; width: 30%;">
-							<label>골</label> <input type="number" class="form-control"
-								rows="3" name="recordGole" value="${record.recordGole}" />
+							<label>골</label> 
+							<input type="number" class="form-control" rows="3" name="recordGole" value="${record.recordGole}" />
 						</div>
-						<div>
 							<div class="form-group"
 								style="border: 1px; float: left; width: 30%;">
-								<label>어시</label> <input type="number" class="form-control"
-									rows="3" name="recordAssist" value="${record.recordAssist}" />
+								<label>어시</label> 
+								<input type="number" class="form-control" rows="3" name="recordAssist" value="${record.recordAssist}" />
 							</div>
-						</div>
+						</c:forEach>
+
+
 						<div class="form-group"
 							style="border: 1px; float: left; width: 10;">
 							<input type="button" class="btn btn-light" value="추가"
@@ -111,8 +114,9 @@ function remove_div(obj){document.getElementById('field').removeChild(obj.parent
 						</div>
 						<input type="button" style="border: 1px; float: left; width: 10;"
 							" class="btn btn-light" value="삭제" onclick="remove_div(this)">
+							
 					</div>
-
+					
 					<div id="field"></div>
 
 				</div>

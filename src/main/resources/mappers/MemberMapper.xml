@@ -31,7 +31,7 @@
 <!-- 수정 -->
 <update id="update">
 	UPDATE TEAM_USERS
-		SET USER_PW= #{userPw}, USER_NAME= #{userName}, USER_LOCATION = #{userLocation},USER_AGE = #{userAge},ROLE=#{role}
+		SET USER_NAME= #{userName}, USER_LOCATION = #{userLocation},USER_AGE = #{userAge},ROLE=#{role}
 			WHERE USER_ID = #{userId}
 </update>
 
