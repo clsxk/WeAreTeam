@@ -77,6 +77,14 @@ public class BoardController {
 		 rttr.addFlashAttribute("removeResult",result);
 		 return "redirect:/board/list";
 	}
+	
+	/* ¸ñ·Ï */
+	@GetMapping(value = "/memberlist")
+	public String getList1(Model model) {
+		List<BoardDto> boardList = boardService.getList();
+		model.addAttribute("boardList", boardList);
+		return "board/memberlist";
+	}
 
 }
 

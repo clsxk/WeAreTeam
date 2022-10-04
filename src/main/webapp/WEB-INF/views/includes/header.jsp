@@ -184,7 +184,7 @@
 		</li>
 		 
 		<li class="nav-item">
-                <a class="nav-link" href="/board/list">
+                <a class="nav-link" href="/board/memberlist">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>공지사항</span></a>
          </li>

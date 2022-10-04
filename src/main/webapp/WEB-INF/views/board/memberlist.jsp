@@ -42,11 +42,10 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">경기일정</h1>
+                    <h1 class="h3 mb-2 text-gray-800">공지사항</h1>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                     
-
                     
                     
                         <div class="card-body">
@@ -55,26 +54,20 @@
                                     <thead>
                                         <tr>
                                             <th>번호</th>
-                                            <th>팀이름</th>
-                                            <th>경기날짜</th>
-                                            <th>경기장</th>
-                                            <th>상대팀</th>        
-                                            <th>경기결과</th>
-                                            <th>팀득점</th>
-                                            <th>팀실점</th>
+                                            <th>제목</th>
+                                            <th>작성자</th>
+                                            <th>작성일</th>        
+                                            <th>수정일</th>
                                         </tr>
                                     </thead>     
                                     <tbody>
-                                     <c:forEach var="match" items="${matchList}">
+                                     <c:forEach var="board" items="${boardList }">
                                      	<tr>
-                                     		<td>${match.matchNo}</td>
-                                     		<td>${match.teamName}</td>
-                                     		<td>${match.matchDate }</td>
-                                     		<td>${match.matchStadium }</td>
-											<td>${match.matchTeam }</td>
-											<td>${match.matchResult }</td>
-											<td>${match.matchGole }</td>
-											<td>${match.matchLostPoint }</td>
+                                     		<td>${board.no }</td>
+                                     		<td>${board.title }</td>
+                                     		<td>${board.writer }</td>
+                                     		<td><fmt:formatDate value="${board.regDate}" pattern="yyyy/MM/dd" /></td>
+                                     		<td><fmt:formatDate value="${board.updateDate}" pattern="yyyy/MM/dd" /></td>
                                      	</tr>
                                      </c:forEach>
                                     </tbody>

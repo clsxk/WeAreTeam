@@ -6,6 +6,7 @@ import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.green.spring.match.domain.MatchDto;
+import org.green.spring.match.domain.MatchDto2;
 import org.green.spring.match.domain.MatchRecordDto;
 import org.green.spring.match.domain.RecordDto;
 import org.green.spring.match.service.MatchService;
@@ -47,17 +48,36 @@ public class MatchController {
 		return "match/registerForm";
 	}
 	
+//	//殿废贸府
+//	@PostMapping(value = "/register")
+//	public String register(MatchDto matchDto,RedirectAttributes rttr, Principal principal, RecordDto recordDto) {
+//		String userId = principal.getName();
+//		MemberDto readDto = memberservice.get(userId);
+//		String teamName = readDto.getTeamName();
+//		matchDto.setTeamName(teamName);
+//		MatchDto registerDto = matchService.register(matchDto);
+//		
+//		RecordDto recordRegisterDto = matchService.registerPoint(recordDto);
+//		
+//		
+//		return "redirect:/match/list";
+//	}
+	
 	//殿废贸府
-	@PostMapping(value = "/register")
-	public String register(MatchDto matchDto,RedirectAttributes rttr, Principal principal) {
+		@PostMapping(value = "/register")
+		public String register(MatchDto matchDto,RedirectAttributes rttr, Principal principal) {
 		String userId = principal.getName();
 		MemberDto readDto = memberservice.get(userId);
-		String teamName = readDto.getTeamName();
+			String teamName = readDto.getTeamName();
 		matchDto.setTeamName(teamName);
-		MatchDto registerDto = matchService.register(matchDto);
-
-		return "redirect:/match/list";
-	}
+			MatchDto registerDto = matchService.register(matchDto);
+//			
+//			RecordDto recordRegisterDto = matchService.registerPoint(recordDto);
+			
+			
+			return "redirect:/match/list";
+		}
+		
 	//格废
 	@GetMapping(value = "/list")
 	public String getList(Model model,MatchDto matchDto, Principal principal) {
@@ -97,6 +117,7 @@ public class MatchController {
 		MatchDto match = matchService.get(matchNo);
 		model.addAttribute("match", match);
 		
+		
 		List<RecordDto> pointList = matchService.getPoint(matchNo);
 		model.addAttribute("pointList",pointList);
 		
@@ -126,7 +147,7 @@ public class MatchController {
 		 * matchService.registerPoint((List<RecordDto>) recordVo);
 		 * rttr.addFlashAttribute("recordPoint", recordPoint);
 		 */
-		
+			
 		
 		
 		return "redirect:/match/read?matchNo=" + matchVo.getMatchNo();

@@ -18,7 +18,7 @@ public interface MatchService {
 	
 	public boolean remove(int matchNo);
 	
-	public List<RecordDto> registerPoint(List<RecordDto> dto);
+	public RecordDto registerPoint(RecordDto dto);
 	
 	/* public boolean modifyPoint(RecordDto dto); */
 	

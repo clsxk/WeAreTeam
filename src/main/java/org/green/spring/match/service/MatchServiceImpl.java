@@ -74,10 +74,10 @@ public class MatchServiceImpl implements MatchService {
 	}
 
 	@Override
-	public List<RecordDto> registerPoint(List<RecordDto> dto) {
+	public RecordDto registerPoint(RecordDto dto) {
 		log.info("Match registerPoint ......" + dto);
-		repository.insertPoint(dto);		
-		return dto ;
+		repository.insertPoint(dto);
+		return dto; 
 	}
 
 	/*

@@ -25,7 +25,7 @@ public interface MatchRepository {
 	
 	// 득점,어시 등록
 //	public void insertPoint(RecordDto dto);
-	public void insertPoint(List<RecordDto> dto);
+	public void insertPoint(RecordDto dto);
 	
 	// 득점,어시 추가
 	public int updatePoint(RecordDto dto);

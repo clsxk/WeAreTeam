@@ -83,26 +83,25 @@ function remove_div(obj){document.getElementById('field').removeChild(obj.parent
 					
 					<div id="room_type">
 					
-						<c:forEach var ="record" items="${pointList}">
+						<c:forEach var ="record" items="recordList">
 						<div class="form-group"
-							style="border: 1px; float: left; width: 30%;">
+							style="border: 1px; float: left; width: 31%;">
 							<label for="image">득점자</label> 
 							<select class="form-control" name ="userName">
-								<option value="userName" selected>${record.userName}</option>
 								<c:forEach items="${nameList}" var="name" >
 									<option><c:out value="${name}" /></option>
 								</c:forEach>
 							</select>
 						</div>
 						<div class="form-group"
-							style="border: 1px; float: left; width: 30%;">
+							style="border: 1px; float: left; width: 30.5%;">
 							<label>골</label> 
-							<input type="number" class="form-control" rows="3" name="recordGole" value="${record.recordGole}" />
+							<input type="number" class="form-control" rows="3" name="recordGole"  />
 						</div>
 							<div class="form-group"
-								style="border: 1px; float: left; width: 30%;">
+								style="border: 1px; float: left; width: 31%;">
 								<label>어시</label> 
-								<input type="number" class="form-control" rows="3" name="recordAssist" value="${record.recordAssist}" />
+								<input type="number" class="form-control" rows="3" name="recordAssist"  />
 							</div>
 						</c:forEach>
 
@@ -113,11 +112,11 @@ function remove_div(obj){document.getElementById('field').removeChild(obj.parent
 								onclick="add_div()"><br />
 						</div>
 						<input type="button" style="border: 1px; float: left; width: 10;"
-							" class="btn btn-light" value="삭제" onclick="remove_div(this)">
+							 class="btn btn-light" value="삭제" onclick="remove_div(this)">
 							
 					</div>
 					
-					<div id="field"></div>
+					<div id="field"></div> 
 
 				</div>
 						

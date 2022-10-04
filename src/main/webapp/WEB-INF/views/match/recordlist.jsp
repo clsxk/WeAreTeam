@@ -40,12 +40,12 @@
 				<div class="form-group"
 					style="border: 1px; float: left; width: 20%;">
 					<label>팀 전체 경기 당 실점</label> <input type="number" class="form-control"
-						rows="3"  value="${matchRecord.matchGole/matchRecord.matchNo}" readonly/>
+						rows="3"  value="<fmt:formatNumber value="${matchRecord.matchGole/matchRecord.matchNo}" pattern="#.##"/>" readonly/>
 				</div>
 				<div class="form-group"
 					style="border: 1px; float: left; width: 20%;">
 					<label>팀 전체 경기 당 실점</label> <input type="number" class="form-control"
-						rows="3"  value="${matchRecord.matchLostPoint/matchRecord.matchNo}" readonly/>
+						rows="3"  value="<fmt:formatNumber value="${matchRecord.matchLostPoint/matchRecord.matchNo}" pattern="#.##"/>" readonly/>
 				</div>
                             
            

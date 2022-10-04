@@ -6,6 +6,8 @@
 	<%@include file="../includes/header.jsp" %>
 <script src="http://code.jquery.com/jquery-3.1.1.js"></script>
 <script>
+let num = 0;
+
 $(document).ready(function() {
 	  $('#matchResult').change(function() {
 	    var result = $('#matchResult option:selected').val();
@@ -19,9 +21,33 @@ $(document).ready(function() {
 	
 	
 function add_div(){    
+	//이전 div의 이름 바꾸기
+/* 	a= document.getElementsByName('userName')[num];
+	a.name = 'list['+num+'].userName';
+	num = num+1;
+	 */
+	list = document.getElementsByName('userName');
+	for(let i=0;i<list.length;i++){
+		a = list[i];
+		a.name = 'list['+num+'].userName';
+	}
+	
+	list = document.getElementsByName('recordGole');
+	for(let i=0;i<list.length;i++){
+		a = list[i];
+		a.name ='list['+num+'].recordGole';
+	}
+	
+	list = document.getElementsByName('recordAssist');
+	for(let i=0;i<list.length;i++){
+		a = list[i];
+		a.name ='list['+num+'].recordAssist';
+	}
+	
 	var div = document.createElement('div');    
 	div.innerHTML = document.getElementById('room_type').innerHTML;    
 	document.getElementById('field').appendChild(div);
+	
 	}
 
 function remove_div(obj){document.getElementById('field').removeChild(obj.parentNode);
@@ -91,9 +117,9 @@ function remove_div(obj){document.getElementById('field').removeChild(obj.parent
 										<input type="number" class="form-control"  value="0" name="recordAssist" rows="3" placeholder="어시 입력 하세요" />
 									</div>
 									 -->
-						<div id="room_type">
+						<%-- <div id="room_type">
 					
-						
+						<c:forEach var ="record" items="recordList">
 						<div class="form-group"
 							style="border: 1px; float: left; width: 31%;">
 							<label for="image">득점자</label> 
@@ -113,7 +139,7 @@ function remove_div(obj){document.getElementById('field').removeChild(obj.parent
 								<label>어시</label> 
 								<input type="number" class="form-control" rows="3" name="recordAssist"  />
 							</div>
-						
+						</c:forEach>
 
 
 						<div class="form-group"
@@ -126,7 +152,7 @@ function remove_div(obj){document.getElementById('field').removeChild(obj.parent
 							
 					</div>
 					
-					<div id="field"></div>
+					<div id="field"></div> --%>
 									
 					</div>
 
