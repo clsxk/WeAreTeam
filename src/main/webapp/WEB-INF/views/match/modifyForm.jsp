@@ -70,8 +70,9 @@ function remove_div(obj){document.getElementById('field').removeChild(obj.parent
     										<option value="패">패</option>
 										</select>
 									</div>
-
+				
 					<div class="point" style="display:none">
+					
 									<div class="form-group">
 										<label>팀득점</label>
 										<input type="number" class="form-control" rows="3" name="matchGole" value="${match.matchGole}"   />

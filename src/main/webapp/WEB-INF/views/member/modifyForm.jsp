@@ -26,7 +26,7 @@
 				<input class="form-control" name="userLocation" value="${member.userLocation}" />
 			</div>
 			<div class="form-group">
-				<label>실력</label>
+				<label>나이</label>
 				<input class="form-control" name="userAge"  value="${member.userAge}" />
 			</div>
 			<div class="form-group">

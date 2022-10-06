@@ -10,7 +10,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">팀관리</h1>
+                    <h1 class="h3 mb-2 text-gray-800">경기 관리</h1>
                     <!-- DataTales Example -->
                     
                     
